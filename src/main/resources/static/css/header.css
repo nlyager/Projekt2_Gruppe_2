@@ -1,0 +1,47 @@
+.header {
+    background-color: #3b73c5;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+.header-container {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: white;
+    text-decoration: none;
+}
+.logo-icon {
+    font-size: 28px;
+}
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 36px;
+}
+.nav-menu a,
+.auth a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+.nav-menu a:hover,
+.auth a:hover {
+    text-decoration: underline;
+}

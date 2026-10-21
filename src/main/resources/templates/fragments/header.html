@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<header th:fragment="header" class="header">
+    <div class="header-container">
+
+        <div class="logo">
+            <a th:href="@{/}">
+                <span class="logo-text">Ønske-list</span>
+            </a>
+        </div>
+
+        <nav class="nav-menu">
+            <a th:href="@{/shop}">Shop</a>
+            <a th:href="@{/find-wishlists}">Find WishList</a>
+            <a th:href="@{/my-wishlist}">My WishList</a>
+            <a th:href="@{/add-wishes}">Add Wishes</a>
+        </nav>
+
+        <div class="auth">
+            <a th:href="@{/login}">
+                Log in
+            </a>
+        </div>
+
+    </div>
+</header>
+
+</body>
+</html>
