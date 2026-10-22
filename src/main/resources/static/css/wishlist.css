@@ -1,0 +1,45 @@
+.wishlist-page {
+    padding: 20px 40px;
+}
+
+.wish-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 180px); /* three fixed-width boxes */
+    gap: 20px;
+    justify-content: start;                  /* keeps them on the left */
+}
+
+.wish-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wish-box img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.wish-info {
+    padding: 10px 12px;
+}
+
+.wish-info h3 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+}
+
+.wish-info p {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 0.9rem;
+}

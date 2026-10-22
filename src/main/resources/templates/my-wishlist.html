@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My WishList</title>
+
+  <link rel="stylesheet" th:href="@{/css/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/wishlist.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<main class="wishlist-page">
+  <h1>My WishList</h1>
+
+  <div class="wish-grid">
+    <div class="wish-box" th:each="wish : ${wishes}">
+      <img th:src="@{'/image/' + ${categories[wish.categoryId].image}}"
+           th:alt="${categories[wish.categoryId].title}">
+      <div class="wish-info">
+        <h3 th:text="${wish.title}">Wish title</h3>
+        <p th:text="${wish.description}">Description</p>
+        <span class="price" th:text="${wish.price} + ' kr.'"></span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
