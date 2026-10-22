@@ -1,0 +1,271 @@
+
+:root {
+    --color-ink: #1c302b;
+    --color-header-yellow: #bd8f2c;
+    --color-text-muted: #6e7e76;
+    --color-button-green: #21483b;
+    --color-button-lightGreen: #dfece3;
+    --color-cream: #fbf8f0;
+    --color-star: #c49b3b;
+    --color-line: #e8e9df;
+    --color-paper: #fffefa;
+}
+
+* {
+    box-sizing: border-box
+}
+
+
+body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: 'cabin', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+
+/** - Hero section - **/
+.hero {
+    max-width: 1144px;
+    width: calc(100% - 56px);
+    margin: 54px auto 78px;
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    min-height: 425px;
+}
+
+.hero-left-container {
+    padding: 10px 0;
+}
+
+.hero h1 {
+    font-family: Manrope, sans-serif;
+    font-size: clamp(39px, 5vw, 61px);
+    line-height: 1.1;
+    letter-spacing: -2.6px;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: var(--color-header-yellow)
+}
+
+.hero-left > p {
+    max-width: 480px;
+    color: var(--color-text-muted);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.button {
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 13px 18px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: transform .5s;
+    background-color: var(--color-button-green);
+    color: white;
+}
+
+.button:hover {
+    transform: scale(1.03);
+}
+
+.text-line {
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px
+}
+
+.hero-note {
+    color: var(--color-text-muted);
+    margin-top: 29px;
+    font-size: 11px;
+}
+
+.tiny-star {
+    color: var(--color-star);
+    margin-right: 6px;
+}
+
+.hero-right-container {
+    position: relative;
+    height: 420px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 50%, #736b56 0%, #12161a 28%, #12161a 70%, #1c302b 100%);
+    display: grid;
+    place-items: center;
+}
+
+.orbit {
+    position: absolute;
+    width: 290px;
+    height: 290px;
+    border: 1px solid rgba(139, 145, 105, .25);
+    border-radius: 50%
+}
+
+.orbit-two {
+    width: 365px;
+    height: 365px;
+    border-style: dashed
+}
+
+.glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #ffdb78;
+    filter: blur(45px);
+    opacity: .5
+}
+
+#wish-star {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 2;
+    filter: drop-shadow(0 12px 17px rgba(155, 112, 35, .28));
+    opacity: 1
+}
+
+.sparkle {
+    position: absolute;
+    color: var(--color-star);
+    font-size: 26px
+}
+
+.sparkle-a {
+    top: 20%;
+    left: 23%
+}
+
+.sparkle-b {
+    top: 25%;
+    right: 18%;
+    font-size: 19px
+}
+
+.sparkle-c {
+    bottom: 25%;
+    left: 22%;
+    font-size: 38px
+}
+
+.sparkle-d {
+    bottom: 25%;
+    right: 23%;
+    font-size: 38px
+}
+
+/** - Features section - **/
+
+.features {
+    max-width: 1144px;
+    width: calc(100% - 56px);
+    margin: 0 auto 85px
+}
+
+.section-intro {
+    text-align: center;
+    margin-bottom: 28px
+}
+
+.section-intro h2 {
+    font: 700 29px Manrope, sans-serif;
+    letter-spacing: -1px;
+    margin: 12px 0
+}
+
+#feature-grid {
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap: 18px
+}
+
+.feature-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+    padding: 25px
+}
+
+.feature-icon {
+    display: grid;
+    place-items: center;
+    width: 43px;
+    height: 43px;
+    background: #f5edda;
+    color: #a07a26;
+    border-radius: 12px;
+    font-size: 22px
+}
+
+.feature-card h3 {
+    font: 700 16px Manrope, sans-serif;
+    margin: 20px 0 8px
+}
+
+.feature-card p, .panel p {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 0
+}
+
+@media (max-width: 760px) {
+    .hero {
+        grid-template-columns:1fr;
+        margin-top: 35px;
+        gap: 25px
+    }
+
+    .hero-art {
+        height: 330px;
+        grid-row: 1
+    }
+
+    .hero-copy {
+        grid-row: 2
+    }
+
+    .hero h1 {
+        font-size: 45px
+    }
+
+    .feature-grid {
+        grid-template-columns:1fr
+    }
+
+    .features {
+        margin-bottom: 50px
+    }
+
+}

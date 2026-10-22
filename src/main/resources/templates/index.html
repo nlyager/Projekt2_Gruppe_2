@@ -5,18 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ønske-list</title>
-
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+
 
 <main>
-    <h1>Welcome</h1>
-    <p>Your content goes here.</p>
+    <section class="hero">
+        <div class="hero-left-container">
+            <h1>All your wishes<br><span>In one little star</span></h1>
+            <p>Collect all your wishes in one, share them with people your care about, and let gift planning become just a bit easier </p>
+            <div class="hero-actions">
+                <a class="button" th:ref="@{/register}">Create account</a>
+                <a class="text-line">I already has a account</a>
+            </div>
+            <div class="hero-note"><span class="tiny-star">✦</span>Free to begin · Share with a single click</div>
+        </div>
+        <div class="hero-right-container" aria-label="A wishing star">
+            <div class="orbit oribit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="glow"></div>
+            <img id="wish-star" th:src="@{'/image/Logo-test-2.svg'}">
+            <span class="sparkle sparkle-a">✧</span>
+            <span class="sparkle sparkle-b">✦</span>
+            <span class="sparkle sparkle-c">✧</span>
+            <span class="sparkle sparkle-d">✦</span>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="section-intro">
+            <span class="eyebrow">A LITTLE HELP FOR EVERYDAY LIFE</span>
+            <h2>Wishes bundle. Overview sorted</h2>
+        </div>
+
+        <div id="feature-grid">
+            <article class="feature-card"><span class="feature-icon">✎</span><h3>Create a list</h3><p>Add wishes with titles, descriptions, prices and categories.</p></article>
+            <article class="feature-card"><span class="feature-icon">✎</span><h3>Create a list</h3><p>Add wishes with titles, descriptions, prices and categories.</p></article>
+            <article class="feature-card"><span class="feature-icon">✎</span><h3>Create a list</h3><p>Add wishes with titles, descriptions, prices and categories.</p></article>
+        </div>
+
+    </section>
 </main>
 
-<div th:replace="~{fragments/footer :: footer}"></div>
+
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
 </body>
 </html>
