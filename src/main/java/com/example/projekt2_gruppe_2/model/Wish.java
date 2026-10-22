@@ -4,14 +4,14 @@ public class Wish {
     private int wishId;
     private String title;
     private String description;
-    private int price;
+    private double price;
     private int reserveId;
     private int listId;
     private int categoryId;
 
     public Wish() { }
 
-    public Wish(String title, String description, int price, int reserveId, int listId, int categoryId) {
+    public Wish(String title, String description, double price, int reserveId, int listId, int categoryId) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -20,7 +20,7 @@ public class Wish {
         this.categoryId = categoryId;
     }
 
-    public Wish(int wishId, String title, String description, int price, int reserveId, int listId, int categoryId) {
+    public Wish(int wishId, String title, String description, double price, int reserveId, int listId, int categoryId) {
         this.wishId = wishId;
         this.title = title;
         this.description = description;
@@ -54,11 +54,11 @@ public class Wish {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
