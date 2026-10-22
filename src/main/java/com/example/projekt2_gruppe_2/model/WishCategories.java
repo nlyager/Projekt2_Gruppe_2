@@ -13,12 +13,17 @@ public class WishCategories {
     }
 
     public WishCategories(int categoryId, String title, String image) {
-        this(title, image);
         this.categoryId = categoryId;
+        this.title = title;
+        this.image = image;
     }
 
     public int getCategoryId() {
         return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTitle() {

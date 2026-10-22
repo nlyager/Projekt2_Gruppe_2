@@ -20,14 +20,22 @@ public class Wish {
         this.categoryId = categoryId;
     }
 
-    public Wish(int wishId, String title, String description, int price, int reserveId, int listId,
-                int categoryId) {
-        this(title, description, price, reserveId, listId, categoryId);
+    public Wish(int wishId, String title, String description, int price, int reserveId, int listId, int categoryId) {
         this.wishId = wishId;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.reserveId = reserveId;
+        this.listId = listId;
+        this.categoryId = categoryId;
     }
 
     public int getWishId() {
         return wishId;
+    }
+
+    public void setWishId(int wishId) {
+        this.wishId = wishId;
     }
 
     public String getTitle() {

@@ -1,40 +1,29 @@
 package com.example.projekt2_gruppe_2.model;
 
 public class WishListSharedWith {
-    private int categoryId;
-    private String title;
-    private String image;
+    private int userID;
+    private int listID;
 
-    public WishListSharedWith(String title, String image) { }
+    public WishListSharedWith() { }
 
-    public WishListSharedWith(int categoryId, String title, String image) {
-        this.categoryId = categoryId;
-        this.title = title;
-        this.image = image;
+    public WishListSharedWith(int userID, int listID) {
+        this.userID = userID;
+        this.listID = listID;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
-    public String getTitle() {
-        return title;
+    public int getListID() {
+        return listID;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setListID(int listID) {
+        this.listID = listID;
     }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
 }
