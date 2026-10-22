@@ -9,10 +9,9 @@ public class Wish {
     private int listId;
     private int categoryId;
 
-    public Wish() {
-    }
+    public Wish() { }
 
-    public Wish(String title, String description, int price, Integer reserveId, int listId, int categoryId) {
+    public Wish(String title, String description, int price, int reserveId, int listId, int categoryId) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -29,10 +28,6 @@ public class Wish {
 
     public int getWishId() {
         return wishId;
-    }
-
-    public void setWishId(int wishId) {
-        this.wishId = wishId;
     }
 
     public String getTitle() {
