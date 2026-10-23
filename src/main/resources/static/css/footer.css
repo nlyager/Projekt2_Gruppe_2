@@ -1,20 +1,30 @@
-.footer {
-    width: 100%;
-    padding: 40px 20px;
-    text-align: center;
+.footer-container {
+    margin-top: auto;
+    min-height: 78px;
+    border-top: 1px solid var(--color-line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px max(28px, calc((100% - 1144px) / 2));
+    font-size: 11px;
+    color: var(--color-text-muted);
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
+.footer-left {
+    color: grey;
+    max-width: 36rem;
 }
 
-.copyright {
-    margin-bottom: 8px;
-    font-size: 14px;
+.footer-left img {
+    height: 4rem;
+    filter: grayscale(1) invert(1) brightness(3.5);
 }
 
-.trademark {
-    font-size: 14px;
-    line-height: 1.5;
+.footer-right a {
+    color: grey;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: text-shadow 0.15s;
 }
+

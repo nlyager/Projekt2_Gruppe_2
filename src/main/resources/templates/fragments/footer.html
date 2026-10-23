@@ -2,19 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<footer th:fragment="footer" class="footer">
-    <div class="footer-content">
-        <div class="copyright">
-            Copyrights © 2026 All Rights Reserved by Ønske-list.dk
+<footer th:fragment="footer" class="footer-container">
+        <div class="footer-left">
+            <img th:src="@{/image/Logo-test-3.svg}">
+            <br>
+            <i>
+                Copyrights © 2026 All Rights Reserved by Ønske-list.dk.
+                All trademarks is owned by there respective owners.
+            </i>
         </div>
-
-        <div class="trademark">
-            Chrome® is a registered trademark of Google.
-            Safari® is a registered trademark of Apple.
-            Firefox® is a registered trademark of Mozilla.
-            Microsoft Edge® is a registered trademark of Microsoft.
+        <div class="footer-right">
+            <a th:href="@{/about-us}">About us</a>
+            <a th:href="@{/contact}">Contact</a>
         </div>
-    </div>
 </footer>
 
 </body>

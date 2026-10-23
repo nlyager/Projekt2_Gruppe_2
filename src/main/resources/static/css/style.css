@@ -1,0 +1,15 @@
+:root {
+    --color-ink: #1c302b;
+    --color-header-yellow: #bd8f2c;
+    --color-text-muted: #6e7e76;
+    --color-button-green: #21483b;
+    --color-button-lightGreen: #dfece3;
+    --color-cream: #fbf8f0;
+    --color-star: #c49b3b;
+    --color-line: #e8e9df;
+    --color-paper: #fffefa;
+}
+
+i {
+    font-style: italic;
+}
