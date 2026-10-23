@@ -28,7 +28,7 @@
     transition: text-shadow 0.15s;
 }
 
-.footer-right a :hover {
+.footer-right :hover {
     text-decoration: underline;
 }
 
