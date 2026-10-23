@@ -34,13 +34,12 @@
     gap: 27px;
 
 }
-.auth a,
+
 .nav-menu > a:not(.nav-cta) {
     color: #52645b
 }
 
-.nav-menu a:hover,
-.auth a:hover {
+.nav-menu a:hover {
     text-decoration: underline;
 }
 
