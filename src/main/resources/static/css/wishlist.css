@@ -4,9 +4,8 @@
 
 .wish-grid {
     display: grid;
-    grid-template-columns: repeat(3, 180px); /* three fixed-width boxes */
+    grid-template-columns: repeat(3, 180px);
     gap: 20px;
-    justify-content: start;                  /* keeps them on the left */
 }
 
 .wish-box {
@@ -14,7 +13,7 @@
     border-radius: 8px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .wish-box img {
