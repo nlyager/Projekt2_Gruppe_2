@@ -202,7 +202,14 @@ a {
     background: var(--color-paper);
     border: 1px solid var(--color-line);
     border-radius: 16px;
-    padding: 25px
+    padding: 25px;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#feature-grid > .feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 4px var(--color-text-muted);
 }
 
 .feature-icon {
