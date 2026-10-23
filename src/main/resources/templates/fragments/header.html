@@ -5,24 +5,16 @@
 <header th:fragment="header" class="header">
     <div class="header-container">
 
-        <div class="logo">
-            <a th:href="@{/}">
-                <span class="logo-text">Ønske-list</span>
-            </a>
-        </div>
-
+        <a class="logo" th:href="@{/}">
+            <img th:src="@{/image/Logo-test-3.svg}">
+        </a>
         <nav class="nav-menu">
             <a th:href="@{/shop}">Shop</a>
             <a th:href="@{/find-wishlists}">Find WishList</a>
             <a th:href="@{/my-wishlist}">My WishList</a>
             <a th:href="@{/add-wishes}">Add Wishes</a>
+            <a class="nav-cta" th:href="@{/login}">Log ind</a>
         </nav>
-
-        <div class="auth">
-            <a th:href="@{/login}">
-                Log in
-            </a>
-        </div>
 
     </div>
 </header>
