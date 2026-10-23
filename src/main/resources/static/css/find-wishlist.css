@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: 'cabin', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+}

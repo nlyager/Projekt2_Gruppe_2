@@ -10,6 +10,10 @@
     --color-paper: #fffefa;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 i {
     font-style: italic;
 }
