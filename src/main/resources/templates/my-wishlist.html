@@ -15,16 +15,33 @@
 <main class="wishlist-page">
   <h1>My WishList</h1>
 
-  <div class="wish-grid">
-    <div class="wish-box" th:each="wish : ${wishes}">
-      <img th:src="@{'/image/' + ${categories[wish.categoryId].image}}"
-           th:alt="${categories[wish.categoryId].title}">
-      <div class="wish-info">
-        <h3 th:text="${wish.title}">Wish title</h3>
-        <p th:text="${wish.description}">Description</p>
-        <span class="price" th:text="${wish.price} + ' kr.'"></span>
+  <div class="wishlist-layout">
+
+    <div class="wish-grid">
+      <div class="wish-box" th:each="wish : ${wishes}">
+        <img th:src="@{'/image/' + ${categories[wish.categoryId].image}}"
+             th:alt="${categories[wish.categoryId].title}">
+        <div class="wish-info">
+          <h3 th:text="${wish.title}">Wish title</h3>
+          <p th:text="${wish.description}">Description</p>
+          <span class="price" th:text="${wish.price} + ' kr.'"></span>
+        </div>
       </div>
     </div>
+
+    <aside class="wishlist-side">
+      <section class="add-wish">
+        <h2>Add wish from another website:</h2>
+        <form th:action="@{/add-wish-link}" method="post" class="add-wish-form">
+          <input type="url" name="link" placeholder="Input link">
+          <button type="submit" name="add">+</button>
+        </form>
+      </section>
+      <section class="ads">
+        <p>Ads</p>
+      </section>
+    </aside>
+
   </div>
 </main>
 
