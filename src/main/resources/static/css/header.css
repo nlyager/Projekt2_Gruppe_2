@@ -1,5 +1,5 @@
 .header {
-    background-color: var(--color-cream);
+    background-color: var(--wishing-color-cream);
 }
 .header-container {
     height: 82px;
@@ -44,7 +44,7 @@
 }
 
 .nav-cta {
-    background: var(--color-button-green);
+    background: var(--wishing-color-darkGreen);
     color: white;
     padding: 12px 18px;
     border-radius: 9px

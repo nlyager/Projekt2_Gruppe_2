@@ -13,7 +13,48 @@
 <header th:replace="~{fragments/header :: header}"></header>
 
 <main>
+    <!-- Find wishlist section -->
+    <section class="find-wishlist-container">
 
+        <h1>Find a friends wishlist</h1>
+
+        <!-- Card search section -->
+        <div id="sort-box">
+            <input id="search-input" type="text" placeholder="Input a email">
+
+            <!--
+            <select id="wishlist-type-select">
+                <option value="">All wishlists</option>
+                <option th:each="type : ${wishListTypeList}"
+                        th:value="${type.getwishListTypeName}"
+                        th:text="${type.getwishListTypeName}">Christmas
+                </option>
+            </select>
+            -->
+
+        </div>
+
+
+        <!-- Card section -->
+        <div class="wishlist-card-container">
+
+            <a class="card"
+               th:each="konto : ${wishListList}"
+               th:href="@{/showWishList(id=${wishlist.id})}">
+
+                <img class="image"
+                     th:src="@{'/img/' + ${wishList.image}}"
+                     th:alt="${wishList.title}">
+
+                <div class="card-info">
+                    <h3 th:text="${wishList.title}">Name</h3>
+                    <p th:text="${wishList.description}">Description</p>
+                    <p class="wishes" th:text="${wishList.totalWishAmount + ' wishes'}">0 wishes</p>
+                </div>
+            </a>
+        </div>
+
+    </section>
 
 
 

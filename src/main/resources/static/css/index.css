@@ -6,8 +6,8 @@
 
 body {
     margin: 0;
-    background: var(--color-cream);
-    color: var(--color-ink);
+    background: var(--wishing-color-cream);
+    color: var(--wishing-color-ink);
     font-family: 'cabin', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -45,12 +45,12 @@ a {
 }
 
 .hero h1 span {
-    color: var(--color-header-yellow)
+    color: var(--wishing-color-yellow)
 }
 
 .hero-left > p {
     max-width: 480px;
-    color: var(--color-text-muted);
+    color: var(--wishing-color-mutedGray);
     font-size: 16px;
     line-height: 1.8;
 }
@@ -75,7 +75,7 @@ a {
     font-size: 13px;
     cursor: pointer;
     transition: transform .5s;
-    background-color: var(--color-button-green);
+    background-color: var(--wishing-color-darkGreen);
     color: white;
 }
 
@@ -91,13 +91,13 @@ a {
 }
 
 .hero-note {
-    color: var(--color-text-muted);
+    color: var(--wishing-color-mutedGray);
     margin-top: 29px;
     font-size: 11px;
 }
 
 .tiny-star {
-    color: var(--color-star);
+    color: var(--wishing-color-starYellow);
     margin-right: 6px;
 }
 
@@ -146,7 +146,7 @@ a {
 
 .sparkle {
     position: absolute;
-    color: var(--color-star);
+    color: var(--wishing-color-starYellow);
     font-size: 26px
 }
 
@@ -199,8 +199,8 @@ a {
 }
 
 .feature-card {
-    background: var(--color-paper);
-    border: 1px solid var(--color-line);
+    background: var(--wishing-color-paperWhite);
+    border: 1px solid var(--wishing-color-lightGray);
     border-radius: 16px;
     padding: 25px;
 
@@ -209,7 +209,7 @@ a {
 
 #feature-grid > .feature-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 4px var(--color-text-muted);
+    box-shadow: 0 0 4px var(--wishing-color-mutedGray);
 }
 
 .feature-icon {
@@ -229,7 +229,7 @@ a {
 }
 
 .feature-card p, .panel p {
-    color: var(--color-text-muted);
+    color: var(--wishing-color-mutedGray);
     font-size: 13px;
     line-height: 1.7;
     margin-bottom: 0

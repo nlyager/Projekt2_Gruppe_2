@@ -1,13 +1,13 @@
 .footer-container {
     margin-top: auto;
     min-height: 78px;
-    border-top: 1px solid var(--color-line);
+    border-top: 1px solid var(--wishing-color-lightGray);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px max(28px, calc((100% - 1144px) / 2));
     font-size: 11px;
-    color: var(--color-text-muted);
+    color: var(--wishing-color-mutedGray);
 }
 
 .footer-left {

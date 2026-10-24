@@ -1,13 +1,13 @@
 :root {
-    --color-ink: #1c302b;
-    --color-header-yellow: #bd8f2c;
-    --color-text-muted: #6e7e76;
-    --color-button-green: #21483b;
-    --color-button-lightGreen: #dfece3;
-    --color-cream: #fbf8f0;
-    --color-star: #c49b3b;
-    --color-line: #e8e9df;
-    --color-paper: #fffefa;
+    --wishing-color-ink: #1c302b;
+    --wishing-color-yellow: #bd8f2c;
+    --wishing-color-mutedGray: #6e7e76;
+    --wishing-color-darkGreen: #21483b;
+    --wishing-color-veryLightGreen: #dfece3;
+    --wishing-color-cream: #fbf8f0;
+    --wishing-color-starYellow: #c49b3b;
+    --wishing-color-lightGray: #e8e9df;
+    --wishing-color-paperWhite: #fffefa;
 }
 
 html {
