@@ -40,6 +40,7 @@ CREATE TABLE wish (
     title       varchar(45) not null,
     description varchar(200),
     price       int not null,
+    link        varchar(45),
     reserveID   int,
     listID      int not null,
     categoryID  int not null,
