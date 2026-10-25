@@ -21,7 +21,7 @@ public class WishRepo {
     public ArrayList<WishCategories> getWishCategories() {
         ArrayList<WishCategories> wishCategories = new ArrayList<>();
 
-        String sql = "SELECT * FROM wishCategories";
+        String sql = "SELECT * FROM wishcategories";
         try (Connection con = dataSource.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -80,5 +80,17 @@ public class WishRepo {
         }
         return  wishes;
     }
+
+    public ArrayList<WishList> getWishListsByEmail(String email) {
+        ArrayList<WishList> wishlists = new ArrayList<>();
+
+        String sql = "SELECT * FROM user JOIN wishlist ON user.userID = wishlist.userID WHERE user.email = ?";
+
+
+        return wishlists;
+
+
+    }
+
 
 }

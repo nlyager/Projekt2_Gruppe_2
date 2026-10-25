@@ -26,8 +26,8 @@
             <select id="wishlist-type-select">
                 <option value="">All wishlists</option>
                 <option th:each="type : ${wishListTypeList}"
-                        th:value="${type.getwishListTypeName}"
-                        th:text="${type.getwishListTypeName}">Christmas
+                        th:value="${type.getWishListTypeName}"
+                        th:text="${type.getWishListTypeName}">Christmas
                 </option>
             </select>
             -->
@@ -39,25 +39,21 @@
         <div class="wishlist-card-container">
 
             <a class="card"
-               th:each="konto : ${wishListList}"
+               th:each="wishList : ${wishListList}"
                th:href="@{/showWishList(id=${wishlist.id})}">
 
                 <img class="image"
-                     th:src="@{'/img/' + ${wishList.image}}"
+                     th:src="@{'/image/' + ${wishList.image}}"
                      th:alt="${wishList.title}">
 
                 <div class="card-info">
                     <h3 th:text="${wishList.title}">Name</h3>
-                    <p th:text="${wishList.description}">Description</p>
                     <p class="wishes" th:text="${wishList.totalWishAmount + ' wishes'}">0 wishes</p>
                 </div>
             </a>
         </div>
 
     </section>
-
-
-
 
 </main>
 
