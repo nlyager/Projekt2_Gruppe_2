@@ -1,7 +1,7 @@
 package com.example.projekt2_gruppe_2.model;
 
 public class User {
-    private int userID;
+    final int userID;
     private String name;
     private String email;
     private String password;

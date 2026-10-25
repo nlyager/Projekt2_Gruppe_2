@@ -1,10 +1,10 @@
 package com.example.projekt2_gruppe_2.model;
 
 public class WishList {
-    private int listID;
+    final int listID;
     private String title;
     private String description;
-    private int userID;
+    final int userID;
 
     public WishList(int listID, String title, String description, int userID) {
         this.listID = listID;
