@@ -4,13 +4,22 @@ public class WishList {
     final int listID;
     private String title;
     private String description;
-    final int userID;
+    private int userID;
+    private String image;
 
-    public WishList(int listID, String title, String description, int userID) {
+    public WishList(int listID, String title, String description, int userID, String image) {
         this.listID = listID;
         this.title = title;
         this.description = description;
         this.userID = userID;
+        this.image = image;
+    }
+
+    public WishList(int listID, String title, String description, String image) {
+        this.listID = listID;
+        this.title = title;
+        this.description = description;
+        this.image = image;
     }
 
     public void setDescription(String description) {
@@ -35,5 +44,9 @@ public class WishList {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

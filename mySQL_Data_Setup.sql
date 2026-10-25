@@ -20,16 +20,16 @@ insert into user (name, email, password) VALUES
 ('Mikkel','mikkel@hotmail.com','321');
 
 
-insert into wishlist (title, description, userID) VALUES
-('Christmas List','What i wish for christmas',1),
-('My Christmas List','My christmas list for christmas eve',2),
-('Christmas List','',3),
-('Birthday Wishlist','For my birthday',1),
-('My Birthday List','But what i want',3),
-('Birthday','',4),
-('List for my Confirmation','Thanks for coming to my confirmation, here is what im wishing',1),
-('Confirmation wishlist', '',2),
-('My confirmation','may 21, will be my confirmation, here is my list',4);
+insert into wishlist (title, description, image, userID) VALUES
+('Christmas List','What i wish for christmas',null ,1),
+('My Christmas List','My christmas list for christmas eve',null,2),
+('Christmas List','',null,3),
+('Birthday Wishlist','For my birthday',null,1),
+('My Birthday List','But what i want',null,3),
+('Birthday','',null,4),
+('List for my Confirmation','Thanks for coming to my confirmation, here is what im wishing',null,1),
+('Confirmation wishlist', '',null,2),
+('My confirmation','may 21, will be my confirmation, here is my list',null,4);
 
 
 insert into wish (title, description, price, link, reserveID, listID, categoryID) values
@@ -96,7 +96,7 @@ INSERT INTO wishListSharedWith (userID, listID) VALUES
 (2, 1),
 (3, 1),
 (1, 2),
- (4, 2),
+(4, 2),
 (2, 3),
 (4, 4),
 (1, 5),

@@ -19,8 +19,8 @@
         <h1>Find a friends wishlist</h1>
 
         <!-- Card search section -->
-        <div id="sort-box">
-            <input id="search-input" type="text" placeholder="Input a email">
+        <form th:action="@{/findWishList}" method="get" id="sort-box">
+            <input id="search-input" type="text" name="email" placeholder="Input a email" value="nicklas@lyager.me" required>
 
             <!--
             <select id="wishlist-type-select">
@@ -32,23 +32,26 @@
             </select>
             -->
 
-        </div>
+            <button type="submit">Search</button>
 
 
-        <!-- Card section -->
+        </form>
+
+
+        <!-- WishList Card section -->
         <div class="wishlist-card-container">
 
             <a class="card"
                th:each="wishList : ${wishListList}"
-               th:href="@{/showWishList(id=${wishlist.id})}">
+               th:href="@{/showWishList(id=${wishList.listID})}">
 
                 <img class="image"
-                     th:src="@{'/image/' + ${wishList.image}}"
+                     th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}"
                      th:alt="${wishList.title}">
 
+
                 <div class="card-info">
-                    <h3 th:text="${wishList.title}">Name</h3>
-                    <p class="wishes" th:text="${wishList.totalWishAmount + ' wishes'}">0 wishes</p>
+                    <h3 th:text="${wishList.title}">Wishlist Name</h3>
                 </div>
             </a>
         </div>

@@ -38,26 +38,6 @@ public class WishRepo {
         return  wishCategories;
     }
 
-    public ArrayList<WishList> getWishLists(int userid) {
-        ArrayList<WishList> wishLists = new ArrayList<>();
-
-        String sql = "SELECT * FROM wishlist WHERE userID = ?";
-        try (Connection con = dataSource.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, userid);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("listID");
-                String title = rs.getString("title");
-                String description = rs.getString("description");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return  wishLists;
-    }
 
     public ArrayList<Wish> getWishes(int listid) {
         ArrayList<Wish> wishes = new ArrayList<>();
@@ -79,17 +59,6 @@ public class WishRepo {
             e.printStackTrace();
         }
         return  wishes;
-    }
-
-    public ArrayList<WishList> getWishListsByEmail(String email) {
-        ArrayList<WishList> wishlists = new ArrayList<>();
-
-        String sql = "SELECT * FROM user JOIN wishlist ON user.userID = wishlist.userID WHERE user.email = ?";
-
-
-        return wishlists;
-
-
     }
 
 

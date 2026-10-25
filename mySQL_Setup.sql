@@ -25,6 +25,7 @@ CREATE TABLE wishList (
     title       varchar(45) not null,
     description varchar(200),
     userID      int not null,
+    image       varchar(45),
 
     foreign key (userID) references user (userID)
 );
@@ -56,5 +57,5 @@ CREATE TABLE wishListSharedWith (
 
     foreign key (userID) references user (userID),
     foreign key (listID) references wishList (listID)
-)
+);
 
