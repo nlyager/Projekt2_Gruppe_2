@@ -14,7 +14,7 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 <main class="wishlist-page">
-  <a th:href="@{/my-wishlist}">← My wishlists</a>
+  <a class="back-link" th:href="@{/my-wishlist}"> <--- </a>
   <h1 th:text="${listTitle}">My WishList</h1>
 
   <div class="wishlist-layout">
