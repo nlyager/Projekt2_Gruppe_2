@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
+<header th:replace="~{fragments/header :: header}"></header>
+<div class="container">
+    <h1>Kontakt os</h1>
 
+    <form>
+        <label for="name">Navn</label>
+        <input type="text" id="name" name="name" placeholder="Dit navn">
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="din@email.dk">
+
+        <label for="message">Besked</label>
+        <textarea id="message" name="message" placeholder="Skriv din besked her..."></textarea>
+
+        <button type="submit">Send besked</button>
+    </form>
+</div>
 </body>
 </html>
