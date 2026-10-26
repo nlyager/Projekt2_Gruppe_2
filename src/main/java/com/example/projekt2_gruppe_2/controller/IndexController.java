@@ -30,9 +30,4 @@ public class IndexController {
         return "about-us";
     }
 
-    @GetMapping("/add-wishes")
-    public String getaddwishes() {
-        System.out.println("getaddwishes");
-        return "add-wishes";
-    }
 }

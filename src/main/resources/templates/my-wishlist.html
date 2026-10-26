@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>My WishList</title>
 
+  <link rel="stylesheet" th:href="@{/css/style.css}">
   <link rel="stylesheet" th:href="@{/css/footer.css}">
   <link rel="stylesheet" th:href="@{/css/header.css}">
   <link rel="stylesheet" th:href="@{/css/wishlist.css}">
@@ -19,8 +20,8 @@
 
     <div class="wish-grid">
       <div class="wish-box" th:each="wish : ${wishes}">
-        <img th:each="c : ${categories}" th:if="${c.categoryId == wish.categoryId}"
-             th:src="@{'/image/categorie_images/' + ${c.image}}" th:alt="${c.title}">
+        <img th:alt="${c.title}" th:each="c : ${categories}"
+             th:if="${c.categoryId == wish.categoryId}" th:src="@{'/image/categorie_images/' + ${c.image}}">
         <div class="wish-info">
           <h3 th:text="${wish.title}">Wish title</h3>
           <p th:text="${wish.description}">Description</p>
@@ -32,9 +33,9 @@
     <aside class="wishlist-side">
       <section class="add-wish">
         <h2>Add wish from another website:</h2>
-        <form th:action="@{/add-wish-link}" method="post" class="add-wish-form">
-          <input type="url" name="link" placeholder="Input link">
-          <button type="submit" name="add">+</button>
+        <form class="add-wish-form" method="post" th:action="@{/add-wish-link}">
+          <input name="link" placeholder="Input link" type="url">
+          <button name="add" type="submit">+</button>
         </form>
       </section>
       <section class="ads">

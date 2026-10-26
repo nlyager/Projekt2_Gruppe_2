@@ -20,6 +20,10 @@ i {
     font-style: italic;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     background-color: var(--wishing-color-cream);
 }
