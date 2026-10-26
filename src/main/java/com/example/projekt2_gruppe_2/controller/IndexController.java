@@ -27,6 +27,24 @@ public class IndexController {
         return "find-wishlist";
     }
 
+    @GetMapping("/contact")
+    public String getcontact() {
+        System.out.println("getcontact");
+        return "contact";
+    }
+
+    @GetMapping("/about-us")
+    public String getaboutus() {
+        System.out.println("getaboutus");
+        return "about-us";
+    }
+
+    @GetMapping("/add-wishes")
+    public String getaddwishes() {
+        System.out.println("getaddwishes");
+        return "add-wishes";
+    }
+
     @GetMapping("/my-wishlist")
     public String myWishlist(Model model) {
         System.out.println("myWishlist()");
