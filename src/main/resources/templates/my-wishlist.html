@@ -19,8 +19,8 @@
 
     <div class="wish-grid">
       <div class="wish-box" th:each="wish : ${wishes}">
-        <img th:src="@{'/image/' + ${categories[wish.categoryId].image}}"
-             th:alt="${categories[wish.categoryId].title}">
+        <img th:each="c : ${categories}" th:if="${c.categoryId == wish.categoryId}"
+             th:src="@{'/image/categorie_images/' + ${c.image}}" th:alt="${c.title}">
         <div class="wish-info">
           <h3 th:text="${wish.title}">Wish title</h3>
           <p th:text="${wish.description}">Description</p>

@@ -58,6 +58,10 @@ public class WishListRepo {
                 String title = rs.getString("title");
                 String description = rs.getString("description");
                 String image =  rs.getString("image");
+
+                WishList wishList = new WishList(id, title, description, image);
+
+                wishLists.add(wishList);
             }
 
         } catch (SQLException e) {
