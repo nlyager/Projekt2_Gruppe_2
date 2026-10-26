@@ -12,49 +12,85 @@
 
 <header th:replace="~{fragments/header :: header}"></header>
 
-<main>
+<main class="find-wishlist-main">
+
     <!-- Find wishlist section -->
     <section class="find-wishlist-container">
 
-        <h1>Find a friends wishlist</h1>
+        <!-- Page find wishlist introduction -->
+        <div class="find-wishlist-intro">
+            <span class="eyebrow">
+                <span class="tiny-star">✦</span>
+             SEARCH BY EMAIL
+            </span>
+
+            <h1>Find a friend's <span>wishlist.</span></h1>
+
+            <p>
+                Looking for gift inspiration? Find someone's wishlist
+                and discover something they'll love.
+            </p>
+        </div>
 
         <!-- Card search section -->
-        <form th:action="@{/findWishList}" method="get" id="sort-box">
-            <input id="search-input" type="text" name="email" placeholder="Input a email" value="nicklas@lyager.me" required>
+        <section class="wishlist-search-section">
+            <div class="search-heading">
+                <div>
+                    <h2>Find a wishlist</h2>
+                    <p>Enter your friend's email address to get started.</p>
+                </div>
+            </div>
 
-            <!--
-            <select id="wishlist-type-select">
-                <option value="">All wishlists</option>
-                <option th:each="type : ${wishListTypeList}"
-                        th:value="${type.getWishListTypeName}"
-                        th:text="${type.getWishListTypeName}">Christmas
-                </option>
-            </select>
-            -->
+            <form th:action="@{/findWishList}" method="get" id="sort-box">
 
-            <button type="submit">Search</button>
+                <label for="search-input">Email Address</label>
 
+                <div class="search-controls">
+                    <input id="search-input" type="email" name="email" placeholder="Input an email"
+                           value="nicklas@lyager.me" required>
 
-        </form>
+                    <!--
+                    <select id="wishlist-type-select">
+                        <option value="">All wishlists</option>
+                        <option th:each="type : ${wishListTypeList}"
+                                th:value="${type.getWishListTypeName}"
+                                th:text="${type.getWishListTypeName}">Christmas
+                        </option>
+                    </select>
+                    -->
+
+                    <button class="button" type="submit"><span>Search</span></button>
+                </div>
+            </form>
+        </section>
 
 
         <!-- WishList Card section -->
-        <div class="wishlist-card-container">
+        <section class="wishlist-results">
+            <div class="wishlist-card-container">
 
-            <a class="card"
-               th:each="wishList : ${wishListList}"
-               th:href="@{/showWishList(id=${wishList.listID})}">
+                <a class="wishlist-card"
+                   th:each="wishList : ${wishListList}"
+                   th:href="@{/showWishList(id=${wishList.listID})}">
 
-                <img class="image"
-                     th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}"
-                     th:alt="${wishList.title}">
+                    <img class="wishlist-card-image"
+                         th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}"
+                         th:alt="${wishList.title}">
 
 
-                <div class="card-info">
-                    <h3 th:text="${wishList.title}">Wishlist Name</h3>
-                </div>
-            </a>
-        </div>
+                    <div class="wishlist-card-info">
+                        <span class="wishlist-card-label">WISHLIST</span>
+
+                        <h3 th:text="${wishList.title}">Wishlist Name</h3>
+
+                        <span class="wishlist-card-link">Explore wishlist</span>
+
+                        <span class="wishlist-card-star">✦</span>
+                    </div>
+
+                </a>
+            </div>
+        </section>
 
     </section>
 
