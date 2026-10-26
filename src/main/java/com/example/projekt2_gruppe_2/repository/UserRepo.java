@@ -62,4 +62,27 @@ public class UserRepo {
 
         return Optional.empty();
     }
+
+    public Integer getUserIDByEmailAndPassword(String email, String password) {
+
+        String sql = "SELECT userID FROM user WHERE email = ? AND password = ?";
+
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("userID");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

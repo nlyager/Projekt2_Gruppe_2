@@ -12,7 +12,45 @@
             <a th:href="@{/find-wishlist}">Find WishList</a>
             <a th:href="@{/my-wishlist}">My WishList</a>
             <a th:href="@{/shop}">Shop</a>
-            <a class="nav-cta" th:href="@{/login}">Log in</a>
+            <!--<a class="nav-cta" th:href="@{/login}">Log in</a>-->
+
+            <div class="header-button">
+
+                <!-- Show when the user is NOT logged in -->
+                <div th:if="${session.userID == null}">
+                    <input type="checkbox" id="login-toggle">
+                    <label for="login-toggle" class="nav-cta">
+                        Log in
+                    </label>
+
+                    <div id="login-popup" class="popup">
+                        <div class="login-box">
+
+                            <label for="login-toggle" class="close">x</label>
+                            <form th:action="@{/login}" method="post">
+
+                                <input type="email" name="email" placeholder="Email" value="nicklas@lyager.me" required>
+
+                                <input type="password" name="password" placeholder="Password" value="123" required>
+
+                                <button type="submit">Log in</button>
+                                <p th:if="${param.loginError}" class="login-error">
+                                    Incorrect email or password.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Show when the user IS logged in -->
+                <form th:if="${session.userID != null}"
+                      th:action="@{/logout}" method="post">
+
+                    <button type="submit" class="nav-cta">
+                        Log out
+                    </button>
+                </form>
+            </div>
         </nav>
 
     </div>

@@ -1,3 +1,5 @@
+/** Header Container **/
+
 .header {
     background-color: var(--wishing-color-cream);
 }
@@ -18,6 +20,8 @@
     padding-right: max(28px, calc((100% - 1144px) / 2));
     border-bottom: 1px solid rgba(28, 48, 43, .08);
 }
+
+/** Header Links **/
 
 .logo img {
     height: 45px;
@@ -47,11 +51,92 @@
     background: var(--wishing-color-darkGreen);
     color: white;
     padding: 12px 18px;
-    border-radius: 9px
+    border-radius: 9px;
+    transition: filter 0.2s, box-shadow 0.2s;
+
+    /** because its used for button and label **/
+    font: inherit;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-cta:hover {
+    filter: brightness(1.07);
+    box-shadow: 0px 0px 8px var(--wishing-color-mutedGray);
+}
+
+/** Popup Section **/
+
+#login-toggle, #register-toggle {
+    display: none;
+}
+
+.popup {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#register-popup,
+#login-popup {
+    display: none;
+}
+
+#register-toggle:checked ~ #register-popup {
+    display: flex;
+}
+
+#login-toggle:checked ~ #login-popup {
+    display: flex;
+}
+
+.login-box {
+    position: relative;
+
+    background: var(--wishing-color-lightGray);
+    padding: 30px;
+    width: 300px;
+
+    border-radius: 10px;
+}
+
+.login-box input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
 
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.login-error {
+    color: #c51f32;
+    font-size: 14px;
+}
 
 @media (max-width: 760px) {
     .navbar {

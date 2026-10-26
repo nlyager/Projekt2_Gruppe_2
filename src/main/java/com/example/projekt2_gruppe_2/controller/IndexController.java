@@ -1,6 +1,9 @@
 package com.example.projekt2_gruppe_2.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -13,8 +16,18 @@ public class IndexController {
     }
 
     @GetMapping("/find-wishlist")
-    public String getfindwishlist() {
+    public String getfindwishlist(HttpSession httpSession, Model model) {
+
+        Integer userID = (Integer) httpSession.getAttribute("userID");
+
+        if (userID == null) {
+            System.out.println("getfindwishlist()");
+            System.out.println("userID is null");
+            return "redirect:/";
+        }
+
         System.out.println("getfindwishlist()");
+        System.out.println("userID: " + userID);
         return "find-wishlist";
     }
 
