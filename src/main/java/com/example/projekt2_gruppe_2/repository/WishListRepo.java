@@ -23,7 +23,7 @@ public class WishListRepo {
         String sql = "SELECT * FROM user JOIN wishlist ON user.userID = wishlist.userID WHERE user.email = ?";
 
         try (Connection con = dataSource.getConnection()) {
-             PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
 
@@ -57,6 +57,7 @@ public class WishListRepo {
                 int id = rs.getInt("listID");
                 String title = rs.getString("title");
                 String description = rs.getString("description");
+                String image =  rs.getString("image");
             }
 
         } catch (SQLException e) {
