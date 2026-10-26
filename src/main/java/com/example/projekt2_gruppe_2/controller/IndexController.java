@@ -16,7 +16,7 @@ public class IndexController {
     }
 
     @GetMapping("/find-wishlist")
-    public String getfindwishlist(HttpSession httpSession, Model model) {
+    public String getfindwishlist(HttpSession httpSession) {
 
         Integer userID = (Integer) httpSession.getAttribute("userID");
 
