@@ -1,16 +1,14 @@
 package com.example.projekt2_gruppe_2.controller;
 
-import com.example.projekt2_gruppe_2.model.Wish;
-import com.example.projekt2_gruppe_2.model.WishCategories;
 import com.example.projekt2_gruppe_2.model.WishList;
 import com.example.projekt2_gruppe_2.repository.WishListRepo;
 import com.example.projekt2_gruppe_2.repository.WishRepo;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WishController {
@@ -22,20 +20,31 @@ public class WishController {
     WishListRepo wishListRepo;
 
     @GetMapping("/my-wishlist")
-    public String myWishlist(Model model) {
-        System.out.println("myWishlist()");
+    public String myWishlist(@RequestParam(required = false) Integer listId,
+                             HttpSession session, Model model) {
+        Integer userId = (Integer) session.getAttribute("userID");
+        if (userId == null) {
+            return "redirect:/?loginError=true";
+        }
 
-        int userId = 1;
+        if (listId == null) {
+            model.addAttribute("wishLists", wishListRepo.getWishLists(userId));
+            return "my-wishlists";
+        }
 
-        ArrayList<WishList> wishLists = wishListRepo.getWishLists(userId);
-        int listId = wishLists.get(0).getListID();
+        WishList current = null;
+        for (WishList list : wishListRepo.getWishLists(userId)) {
+            if (list.getListID() == listId) {
+                current = list;
+            }
+        }
+        if (current == null) {
+            return "redirect:/my-wishlist";
+        }
 
-        ArrayList<Wish> wishes = wishRepo.getWishes(listId);
-        model.addAttribute("wishes", wishes);
-
-        ArrayList<WishCategories> wishCategories = wishRepo.getWishCategories();
-        model.addAttribute("categories", wishCategories);
-
+        model.addAttribute("listTitle", current.getTitle());
+        model.addAttribute("wishes", wishRepo.getWishes(listId));
+        model.addAttribute("categories", wishRepo.getWishCategories());
         return "my-wishlist";
     }
 }
