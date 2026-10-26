@@ -1,10 +1,12 @@
 :root {
     --wishing-color-ink: #1c302b;
     --wishing-color-yellow: #bd8f2c;
+    --wishing-color-darkYellow: #a07a26;
     --wishing-color-mutedGray: #6e7e76;
     --wishing-color-darkGreen: #21483b;
     --wishing-color-veryLightGreen: #dfece3;
     --wishing-color-cream: #fbf8f0;
+    --wishing-color-lightCream: #f5edda;
     --wishing-color-starYellow: #c49b3b;
     --wishing-color-lightGray: #e8e9df;
     --wishing-color-paperWhite: #fffefa;
@@ -16,4 +18,8 @@ html {
 
 i {
     font-style: italic;
+}
+
+body {
+    background-color: var(--wishing-color-cream);
 }
