@@ -44,7 +44,7 @@ textarea {
 button {
     margin-top: 20px;
     padding: 12px;
-    background-color: #0078d4;
+    background-color: #a07a26;
     color: white;
     border: none;
     border-radius: 5px;
@@ -53,4 +53,15 @@ button {
 
 button:hover {
     background-color: #005ea6;
+}
+
+.success-message {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    text-align: center;
 }
