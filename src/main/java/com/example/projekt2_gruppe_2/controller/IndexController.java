@@ -15,22 +15,6 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/find-wishlist")
-    public String getfindwishlist(HttpSession session) {
-
-        Integer userID = (Integer) session.getAttribute("userID");
-
-        if (userID == null) {
-            System.out.println("getfindwishlist()");
-            System.out.println("userID is null");
-            return "redirect:/";
-        }
-
-        System.out.println("getfindwishlist()");
-        System.out.println("userID: " + userID);
-        return "find-wishlist";
-    }
-
     @GetMapping("/contact")
     public String getcontact() {
         System.out.println("getcontact");
