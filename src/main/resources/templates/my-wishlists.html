@@ -32,7 +32,7 @@
 
                 <a class="wishlist-card"
                    th:each="wishList : ${wishLists}"
-                   th:href="@{/my-wishlist(listId=${wishList.listID})}">
+                   th:href="@{/my-wishlist(listID=${wishList.listID})}">
 
                 <img class="wishlist-card-image"
                      th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}"
