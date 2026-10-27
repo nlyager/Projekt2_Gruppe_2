@@ -183,11 +183,16 @@
     gap: 18px;
 }
 
+.wishlist-entry {
+    position: relative;
+    min-width: 0;
+}
+
 .wishlist-card {
     position: relative;
 
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 20px;
 
     min-width: 0;
@@ -244,10 +249,26 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 12px;
 
+    flex: 1;
     min-width: 0;
 
+}
+
+.wishlist-card-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--wishing-color-ink);
+    text-decoration: none;
+}
+
+.wishlist-card-image-link {
+    display: flex;
+    flex-shrink: 0;
 }
 
 .wishlist-card-label {
@@ -264,6 +285,81 @@
     margin: 0;
     overflow-wrap: anywhere;
 
+}
+
+.wishlist-delete-form {
+    align-self: flex-end;
+    margin: 0;
+}
+
+.wishlist-card .wishlist-card-info > .wishlist-delete-form .wishlist-delete-button {
+    display: inline-block;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 7px;
+    background: #c62828;
+    color: #fff;
+    font: 700 11px Cabin, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.wishlist-card .wishlist-card-info > .wishlist-delete-form .wishlist-delete-button:hover {
+    background: #a61f1f;
+}
+
+.wishlist-delete-dialog {
+    width: min(420px, calc(100% - 40px));
+    padding: 28px;
+    border: 1px solid var(--wishing-color-lightGray);
+    border-radius: 16px;
+    background: var(--wishing-color-paperWhite);
+    color: var(--wishing-color-ink);
+    box-shadow: 0 16px 48px rgba(28, 48, 43, 0.24);
+}
+
+.wishlist-delete-dialog::backdrop {
+    background: rgba(15, 25, 22, 0.55);
+}
+
+.wishlist-delete-dialog h2 {
+    margin: 0 0 12px;
+    font: 700 22px Manrope, sans-serif;
+}
+
+.wishlist-delete-dialog p {
+    margin: 0;
+    color: var(--wishing-color-mutedGray);
+    line-height: 1.6;
+}
+
+.wishlist-delete-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.wishlist-delete-dialog-actions button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 8px;
+    font: 700 13px Cabin, sans-serif;
+    cursor: pointer;
+}
+
+.wishlist-cancel-button {
+    background: var(--wishing-color-lightCream);
+    color: var(--wishing-color-ink);
+}
+
+.wishlist-confirm-button {
+    background: #c62828;
+    color: #fff;
+}
+
+.wishlist-confirm-button:hover {
+    background: #a61f1f;
 }
 
 .wishlist-card-link {

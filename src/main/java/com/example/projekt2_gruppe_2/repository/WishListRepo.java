@@ -67,4 +67,48 @@ public class WishListRepo {
         }
         return wishLists;
     }
+
+    public void deleteWishList(int userId, int listId) {
+        String deleteSharesSql = "DELETE FROM wishlistsharedwith WHERE listID = ? "
+                + "AND EXISTS (SELECT 1 FROM wishlist WHERE listID = ? AND userID = ?)";
+        String deleteWishesSql = "DELETE FROM wish WHERE listID = ? "
+                + "AND EXISTS (SELECT 1 FROM wishlist WHERE listID = ? AND userID = ?)";
+        String deleteWishListSql = "DELETE FROM wishlist WHERE listID = ? AND userID = ?";
+
+        try (Connection con = dataSource.getConnection()) {
+            con.setAutoCommit(false);
+            try {
+                try (PreparedStatement deleteShares = con.prepareStatement(deleteSharesSql)) {
+                    deleteShares.setInt(1, listId);
+                    deleteShares.setInt(2, listId);
+                    deleteShares.setInt(3, userId);
+                    deleteShares.executeUpdate();
+                }
+
+                try (PreparedStatement deleteWishes = con.prepareStatement(deleteWishesSql)) {
+                    deleteWishes.setInt(1, listId);
+                    deleteWishes.setInt(2, listId);
+                    deleteWishes.setInt(3, userId);
+                    deleteWishes.executeUpdate();
+                }
+
+                try (PreparedStatement deleteWishList = con.prepareStatement(deleteWishListSql)) {
+                    deleteWishList.setInt(1, listId);
+                    deleteWishList.setInt(2, userId);
+                    deleteWishList.executeUpdate();
+                }
+
+                con.commit();
+            } catch (SQLException e) {
+                try {
+                    con.rollback();
+                } catch (SQLException rollbackError) {
+                    e.addSuppressed(rollbackError);
+                }
+                throw e;
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("Could not delete wishlist", e);
+        }
+    }
 }

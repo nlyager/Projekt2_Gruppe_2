@@ -1,6 +1,5 @@
 package com.example.projekt2_gruppe_2.controller;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.HttpMediaTypeException;

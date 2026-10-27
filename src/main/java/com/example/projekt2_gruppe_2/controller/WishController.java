@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -46,5 +47,16 @@ public class WishController {
         model.addAttribute("wishes", wishRepo.getWishes(listID));
         model.addAttribute("categories", wishRepo.getWishCategories());
         return "my-wishlist";
+    }
+
+    @PostMapping("/delete-wishlist")
+    public String deleteWishlist(@RequestParam int listID, HttpSession session) {
+        Integer userID = (Integer) session.getAttribute("userID");
+        if (userID == null) {
+            return "redirect:/?loginError=true";
+        }
+
+        wishListRepo.deleteWishList(userID, listID);
+        return "redirect:/my-wishlist";
     }
 }

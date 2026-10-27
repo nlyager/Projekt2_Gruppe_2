@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/find-wishlist.css}">
+    <link rel="stylesheet" th:href="@{/css/find-wishlist.css?v=3}">
 </head>
 <body>
 
@@ -30,22 +30,44 @@
         <section class="wishlist-results">
             <div class="wishlist-card-container">
 
-                <a class="wishlist-card"
-                   th:each="wishList : ${wishLists}"
-                   th:href="@{/my-wishlist(listID=${wishList.listID})}">
+                <div class="wishlist-entry" th:each="wishList : ${wishLists}">
+                    <div class="wishlist-card">
+                        <a class="wishlist-card-image-link"
+                           th:href="@{/my-wishlist(listID=${wishList.listID})}">
+                            <img class="wishlist-card-image"
+                                 th:alt="${wishList.title}"
+                                 th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}">
+                        </a>
 
-                <img class="wishlist-card-image"
-                     th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}"
-                     th:alt="${wishList.title}">
+                        <div class="wishlist-card-info">
+                            <a class="wishlist-card-details"
+                               th:href="@{/my-wishlist(listID=${wishList.listID})}">
+                                <span class="wishlist-card-label">WISHLIST</span>
+                                <h3 th:text="${wishList.title}">Wishlist Name</h3>
+                                <span class="wishlist-card-link">Explore wishlist</span>
+                            </a>
 
-                <div class="wishlist-card-info">
-                    <span class="wishlist-card-label">WISHLIST</span>
-                    <h3 th:text="${wishList.title}">Wishlist Name</h3>
-                    <span class="wishlist-card-link">Explore wishlist</span>
-                    <span class="wishlist-card-star">✦</span>
+                            <div class="wishlist-delete-form">
+                                <button aria-label="Delete wishlist" class="wishlist-delete-button" title="Delete wishlist"
+                                        th:data-dialog-id="'delete-wishlist-' + ${wishList.listID}"
+                                        type="button">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <dialog class="wishlist-delete-dialog"
+                            th:id="'delete-wishlist-' + ${wishList.listID}">
+                        <h2>Delete wishlist?</h2>
+                        <p>Are you sure you want to delete <strong th:text="${wishList.title}">this wishlist</strong>?
+                            This action cannot be undone.</p>
+                        <form class="wishlist-delete-dialog-actions" method="post"
+                              th:action="@{/delete-wishlist}">
+                            <input name="listID" th:value="${wishList.listID}" type="hidden">
+                            <button class="wishlist-cancel-button" data-dialog-close type="button">Cancel</button>
+                            <button class="wishlist-confirm-button" type="submit">Confirm deletion</button>
+                        </form>
+                    </dialog>
                 </div>
-
-                </a>
             </div>
 
             <p th:if="${#lists.isEmpty(wishLists)}">You have no wishlists yet.</p>
@@ -57,5 +79,6 @@
 
 <footer th:replace="~{fragments/footer :: footer}"></footer>
 
+<script th:src="@{/js/my-wishlists.js}"></script>
 </body>
 </html>
