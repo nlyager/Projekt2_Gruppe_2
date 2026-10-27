@@ -20,21 +20,21 @@ public class WishController {
     WishListRepo wishListRepo;
 
     @GetMapping("/my-wishlist")
-    public String myWishlist(@RequestParam(required = false) Integer listId,
+    public String myWishlist(@RequestParam(required = false) Integer listID,
                              HttpSession session, Model model) {
-        Integer userId = (Integer) session.getAttribute("userID");
-        if (userId == null) {
+        Integer userID = (Integer) session.getAttribute("userID");
+        if (userID == null) {
             return "redirect:/?loginError=true";
         }
 
-        if (listId == null) {
-            model.addAttribute("wishLists", wishListRepo.getWishLists(userId));
+        if (listID == null) {
+            model.addAttribute("wishLists", wishListRepo.getWishLists(userID));
             return "my-wishlists";
         }
 
         WishList current = null;
-        for (WishList list : wishListRepo.getWishLists(userId)) {
-            if (list.getListID() == listId) {
+        for (WishList list : wishListRepo.getWishLists(userID)) {
+            if (list.getListID() == listID) {
                 current = list;
             }
         }
@@ -43,7 +43,7 @@ public class WishController {
         }
 
         model.addAttribute("listTitle", current.getTitle());
-        model.addAttribute("wishes", wishRepo.getWishes(listId));
+        model.addAttribute("wishes", wishRepo.getWishes(listID));
         model.addAttribute("categories", wishRepo.getWishCategories());
         return "my-wishlist";
     }
