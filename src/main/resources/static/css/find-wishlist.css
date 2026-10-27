@@ -177,6 +177,90 @@
 
 /** Wishlist Cards **/
 
+.my-wishlists-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+    align-items: start;
+    gap: 28px;
+}
+
+.wishlist-create-panel {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.wishlist-results {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.wishlist-create-panel {
+    padding: 24px;
+    border: 1px solid var(--wishing-color-lightGray);
+    border-radius: 16px;
+    background: var(--wishing-color-paperWhite);
+}
+
+.wishlist-create-panel h2 {
+    margin: 0 0 8px;
+    font: 700 20px Manrope, sans-serif;
+}
+
+.wishlist-create-panel > p {
+    margin: 0 0 20px;
+    color: var(--wishing-color-mutedGray);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.wishlist-create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.wishlist-create-form label {
+    margin-top: 5px;
+    color: var(--wishing-color-ink);
+    font: 700 12px Manrope, sans-serif;
+}
+
+.wishlist-create-form input,
+.wishlist-create-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid var(--wishing-color-lightGray);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--wishing-color-ink);
+    font: 400 13px Cabin, sans-serif;
+}
+
+.wishlist-create-form textarea {
+    resize: vertical;
+}
+
+.wishlist-create-button {
+    margin-top: 8px;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--wishing-color-darkGreen);
+    color: #fff;
+    font: 700 13px Cabin, sans-serif;
+    cursor: pointer;
+}
+
+.wishlist-create-button:hover {
+    background: var(--wishing-color-ink);
+}
+
+.wishlist-create-panel .wishlist-create-error {
+    margin: 0 0 16px;
+    color: #a61f1f;
+}
+
 .wishlist-card-container {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -410,6 +494,17 @@ RESPONSIVE DESIGN
 ========================= */
 
 @media (max-width: 760px) {
+
+    .my-wishlists-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .wishlist-create-panel,
+    .wishlist-results {
+        grid-column: 1;
+        grid-row: auto;
+    }
 
     .find-wishlist-container {
         margin-top: 35px;

@@ -30,6 +30,7 @@ public class WishController {
 
         if (listID == null) {
             model.addAttribute("wishLists", wishListRepo.getWishLists(userID));
+            model.addAttribute("createError", false);
             return "my-wishlists";
         }
 
@@ -47,6 +48,26 @@ public class WishController {
         model.addAttribute("wishes", wishRepo.getWishes(listID));
         model.addAttribute("categories", wishRepo.getWishCategories());
         return "my-wishlist";
+    }
+
+    @PostMapping("/add-wishlist")
+    public String addWishlist(@RequestParam String title,
+                              @RequestParam String description,
+                              HttpSession session) {
+        Integer userID = (Integer) session.getAttribute("userID");
+        if (userID == null) {
+            return "redirect:/?loginError=true";
+        }
+
+        String trimmedTitle = title.trim();
+        String trimmedDescription = description.trim();
+        if (trimmedTitle.isEmpty() || trimmedDescription.isEmpty()
+                || trimmedTitle.length() > 45 || trimmedDescription.length() > 200) {
+            return "redirect:/my-wishlist?createError=true";
+        }
+
+        wishListRepo.addWishList(userID, trimmedTitle, trimmedDescription);
+        return "redirect:/my-wishlist";
     }
 
     @PostMapping("/delete-wishlist")

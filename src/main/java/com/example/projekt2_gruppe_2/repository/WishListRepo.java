@@ -68,6 +68,20 @@ public class WishListRepo {
         return wishLists;
     }
 
+    public void addWishList(int userId, String title, String description) {
+        String sql = "INSERT INTO wishlist (title, description, userID) VALUES (?, ?, ?)";
+
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, title);
+            ps.setString(2, description);
+            ps.setInt(3, userId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("Could not create wishlist", e);
+        }
+    }
+
     public void deleteWishList(int userId, int listId) {
         String deleteSharesSql = "DELETE FROM wishlistsharedwith WHERE listID = ? "
                 + "AND EXISTS (SELECT 1 FROM wishlist WHERE listID = ? AND userID = ?)";

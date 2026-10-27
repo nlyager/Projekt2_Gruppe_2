@@ -6,7 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/find-wishlist.css?v=3}">
+    <link rel="stylesheet" th:href="@{/css/find-wishlist.css?v=4}">
 </head>
 <body>
 
@@ -27,51 +27,71 @@
             <p>Pick a list to see and manage Your wishes</p>
         </div>
 
-        <section class="wishlist-results">
-            <div class="wishlist-card-container">
+        <div class="my-wishlists-layout">
+            <aside class="wishlist-create-panel">
+                <h2>Create a wishlist</h2>
+                <p>Add a new list.</p>
+                <p class="wishlist-create-error" th:if="${param.createError}">
+                    Enter a title and description within the character limits.
+                </p>
+                <form class="wishlist-create-form" method="post" th:action="@{/add-wishlist}">
+                    <label for="wishlist-title">Title</label>
+                    <input id="wishlist-title" maxlength="45" name="title" required type="text">
 
-                <div class="wishlist-entry" th:each="wishList : ${wishLists}">
-                    <div class="wishlist-card">
-                        <a class="wishlist-card-image-link"
-                           th:href="@{/my-wishlist(listID=${wishList.listID})}">
-                            <img class="wishlist-card-image"
-                                 th:alt="${wishList.title}"
-                                 th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}">
-                        </a>
+                    <label for="wishlist-description">Description</label>
+                    <textarea id="wishlist-description" maxlength="200" name="description" required
+                              rows="5"></textarea>
 
-                        <div class="wishlist-card-info">
-                            <a class="wishlist-card-details"
+                    <button class="wishlist-create-button" type="submit">Add wishlist</button>
+                </form>
+            </aside>
+
+            <section class="wishlist-results">
+                <div class="wishlist-card-container">
+                    <div class="wishlist-entry" th:each="wishList : ${wishLists}">
+                        <div class="wishlist-card">
+                            <a class="wishlist-card-image-link"
                                th:href="@{/my-wishlist(listID=${wishList.listID})}">
-                                <span class="wishlist-card-label">WISHLIST</span>
-                                <h3 th:text="${wishList.title}">Wishlist Name</h3>
-                                <span class="wishlist-card-link">Explore wishlist</span>
+                                <img class="wishlist-card-image"
+                                     th:alt="${wishList.title}"
+                                     th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}">
                             </a>
 
-                            <div class="wishlist-delete-form">
-                                <button aria-label="Delete wishlist" class="wishlist-delete-button" title="Delete wishlist"
-                                        th:data-dialog-id="'delete-wishlist-' + ${wishList.listID}"
-                                        type="button">Delete</button>
+                            <div class="wishlist-card-info">
+                                <a class="wishlist-card-details"
+                                   th:href="@{/my-wishlist(listID=${wishList.listID})}">
+                                    <span class="wishlist-card-label">WISHLIST</span>
+                                    <h3 th:text="${wishList.title}">Wishlist Name</h3>
+                                    <h5 th:text="${wishList.description}">Wishlist Description</h5>
+                                    <span class="wishlist-card-link">Explore wishlist</span>
+                                </a>
+
+                                <div class="wishlist-delete-form">
+                                    <button aria-label="Delete wishlist" class="wishlist-delete-button" th:data-dialog-id="'delete-wishlist-' + ${wishList.listID}"
+                                            title="Delete wishlist"
+                                            type="button">Delete</button>
+                                </div>
                             </div>
                         </div>
+
+                        <dialog class="wishlist-delete-dialog"
+                                th:id="'delete-wishlist-' + ${wishList.listID}">
+                            <h2>Delete wishlist?</h2>
+                            <p>Are you sure you want to delete <strong th:text="${wishList.title}">this wishlist</strong>?
+                                This action cannot be undone.</p>
+                            <form class="wishlist-delete-dialog-actions" method="post"
+                                  th:action="@{/delete-wishlist}">
+                                <input name="listID" th:value="${wishList.listID}" type="hidden">
+                                <button class="wishlist-cancel-button" data-dialog-close type="button">Cancel</button>
+                                <button class="wishlist-confirm-button" type="submit">Confirm deletion</button>
+                            </form>
+                        </dialog>
                     </div>
-
-                    <dialog class="wishlist-delete-dialog"
-                            th:id="'delete-wishlist-' + ${wishList.listID}">
-                        <h2>Delete wishlist?</h2>
-                        <p>Are you sure you want to delete <strong th:text="${wishList.title}">this wishlist</strong>?
-                            This action cannot be undone.</p>
-                        <form class="wishlist-delete-dialog-actions" method="post"
-                              th:action="@{/delete-wishlist}">
-                            <input name="listID" th:value="${wishList.listID}" type="hidden">
-                            <button class="wishlist-cancel-button" data-dialog-close type="button">Cancel</button>
-                            <button class="wishlist-confirm-button" type="submit">Confirm deletion</button>
-                        </form>
-                    </dialog>
                 </div>
-            </div>
 
-            <p th:if="${#lists.isEmpty(wishLists)}">You have no wishlists yet.</p>
-        </section>
+                <p th:if="${#lists.isEmpty(wishLists)}">You have no wishlists yet.</p>
+            </section>
+        </div>
 
     </section>
 
