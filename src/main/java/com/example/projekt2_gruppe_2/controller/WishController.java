@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -20,64 +19,28 @@ public class WishController {
     @Autowired
     WishListRepo wishListRepo;
 
-    @GetMapping("/my-wishlist")
-    public String myWishlist(@RequestParam(required = false) Integer listID,
-                             HttpSession session, Model model) {
+    @GetMapping("/wishlist")
+    public String showWishList(
+            @RequestParam Integer listID,
+            HttpSession session,
+            Model model) {
+
         Integer userID = (Integer) session.getAttribute("userID");
-        if (userID == null) {
-            return "redirect:/?loginError=true";
-        }
 
-        if (listID == null) {
-            model.addAttribute("wishLists", wishListRepo.getWishLists(userID));
-            model.addAttribute("createError", false);
-            return "my-wishlists";
-        }
+        WishList current = wishListRepo.getWishListByID(listID);
 
-        WishList current = null;
-        for (WishList list : wishListRepo.getWishLists(userID)) {
-            if (list.getListID() == listID) {
-                current = list;
-            }
-        }
         if (current == null) {
-            return "redirect:/my-wishlist";
+            return "redirect:/";
         }
 
-        model.addAttribute("listTitle", current.getTitle());
+        boolean isOwner = userID != null && current.getUserID() == userID;
+
+        model.addAttribute("wishList", current);
         model.addAttribute("wishes", wishRepo.getWishes(listID));
         model.addAttribute("categories", wishRepo.getWishCategories());
-        return "my-wishlist";
-    }
 
-    @PostMapping("/add-wishlist")
-    public String addWishlist(@RequestParam String title,
-                              @RequestParam String description,
-                              HttpSession session) {
-        Integer userID = (Integer) session.getAttribute("userID");
-        if (userID == null) {
-            return "redirect:/?loginError=true";
-        }
+        model.addAttribute("isOwner", isOwner);
 
-        String trimmedTitle = title.trim();
-        String trimmedDescription = description.trim();
-        if (trimmedTitle.isEmpty() || trimmedDescription.isEmpty()
-                || trimmedTitle.length() > 45 || trimmedDescription.length() > 200) {
-            return "redirect:/my-wishlist?createError=true";
-        }
-
-        wishListRepo.addWishList(userID, trimmedTitle, trimmedDescription);
-        return "redirect:/my-wishlist";
-    }
-
-    @PostMapping("/delete-wishlist")
-    public String deleteWishlist(@RequestParam int listID, HttpSession session) {
-        Integer userID = (Integer) session.getAttribute("userID");
-        if (userID == null) {
-            return "redirect:/?loginError=true";
-        }
-
-        wishListRepo.deleteWishList(userID, listID);
-        return "redirect:/my-wishlist";
+        return "show-wishlist";
     }
 }

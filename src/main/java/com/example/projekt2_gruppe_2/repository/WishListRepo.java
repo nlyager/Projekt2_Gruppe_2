@@ -125,4 +125,32 @@ public class WishListRepo {
             throw new IllegalStateException("Could not delete wishlist", e);
         }
     }
+
+    public WishList getWishListByID(int listID) {
+
+        String sql = "SELECT * FROM wishList WHERE listID = ?";
+
+        try (Connection con = dataSource.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, listID);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+                    int id = rs.getInt("listID");
+                    String title = rs.getString("title");
+                    String description = rs.getString("description");
+                    int userID = rs.getInt("userID");
+                    String image = rs.getString("image");
+
+                    return new WishList(id, title, description, userID, image);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 }

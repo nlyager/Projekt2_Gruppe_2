@@ -51,7 +51,7 @@
                     <div class="wishlist-entry" th:each="wishList : ${wishLists}">
                         <div class="wishlist-card">
                             <a class="wishlist-card-image-link"
-                               th:href="@{/my-wishlist(listID=${wishList.listID})}">
+                               th:href="@{/wishlist(listID=${wishList.listID})}">
                                 <img class="wishlist-card-image"
                                      th:alt="${wishList.title}"
                                      th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}">
@@ -59,7 +59,7 @@
 
                             <div class="wishlist-card-info">
                                 <a class="wishlist-card-details"
-                                   th:href="@{/my-wishlist(listID=${wishList.listID})}">
+                                   th:href="@{/wishlist(listID=${wishList.listID})}">
                                     <span class="wishlist-card-label">WISHLIST</span>
                                     <h3 th:text="${wishList.title}">Wishlist Name</h3>
                                     <h5 th:text="${wishList.description}">Wishlist Description</h5>
