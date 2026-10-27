@@ -14,9 +14,12 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+h1 span {
+    color: var(--wishing-color-yellow)
+}
+
 h1 {
-    color: #333;
-    text-align: center;
+text-align: center;
 }
 
 p {
