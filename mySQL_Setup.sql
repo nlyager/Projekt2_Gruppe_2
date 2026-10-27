@@ -3,6 +3,8 @@
 -- eller
 -- GRANT ALL PRIVILEGES ON Projekt2_Gruppe_2.* TO 'F26A'@'localhost';
 
+DROP SCHEMA IF EXISTS Projekt2_Gruppe_2;
+
 CREATE SCHEMA IF NOT EXISTS Projekt2_Gruppe_2;
 USE Projekt2_Gruppe_2;
 
@@ -11,7 +13,6 @@ DROP TABLE IF EXISTS wish;
 DROP TABLE IF EXISTS wishList;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS wishCategories;
-
 
 CREATE TABLE user (
     userID   int auto_increment primary key,
