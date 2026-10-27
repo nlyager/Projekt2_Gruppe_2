@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Wishlists</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/find-wishlist.css}">
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main class="find-wishlist-main">
+
+    <section class="find-wishlist-container">
+
+        <div class="find-wishlist-intro">
+            <span class="eyebrow">
+                <span class="tiny-star">✦</span>
+                WISHLISTS
+            </span>
+
+            <h1>My <span>wishlists</span></h1>
+
+            <p>Pick a list to see and manage Your wishes</p>
+        </div>
+
+        <section class="wishlist-results">
+            <div class="wishlist-card-container">
+
+                <a class="wishlist-card"
+                   th:each="wishList : ${wishLists}"
+                   th:href="@{/my-wishlist(listId=${wishList.listID})}">
+
+                <img class="wishlist-card-image"
+                     th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}"
+                     th:alt="${wishList.title}">
+
+                <div class="wishlist-card-info">
+                    <span class="wishlist-card-label">WISHLIST</span>
+                    <h3 th:text="${wishList.title}">Wishlist Name</h3>
+                    <span class="wishlist-card-link">Explore wishlist</span>
+                    <span class="wishlist-card-star">✦</span>
+                </div>
+
+                </a>
+            </div>
+
+            <p th:if="${#lists.isEmpty(wishLists)}">You have no wishlists yet.</p>
+        </section>
+
+    </section>
+
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>
