@@ -57,32 +57,21 @@
     font-size: 0.9rem;
 }
 
-.add-wish h2 {
-    margin-top: 0;
-}
-
-.add-wish-form {
-    display: flex;
-    gap: 8px;
-}
-
-.add-wish-form input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #999;
+.add-wishes-button {
+    display: block;
+    padding: 24px 28px;
     border-radius: 4px;
-}
-
-.add-wish-form button {
-    padding: 8px 12px;
-    border: 1px solid #999;
-    border-radius: 4px;
-    background: #fff;
+    background: var(--wishing-color-darkGreen);
+    color: var(--wishing-color-yellow);
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.add-wish-form button:hover {
-    background: #eee;
+.add-wishes-button:hover {
+    background: darkslategray;
 }
 
 .ads {

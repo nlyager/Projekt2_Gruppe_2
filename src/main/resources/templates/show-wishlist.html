@@ -14,8 +14,8 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 <main class="wishlist-page">
-  <a class="back-link" th:href="@{/my-wishlist}"> <--- </a>
-  <h1 th:text="${listTitle}">My WishList</h1>
+  <a class="back-link" th:href="@{/my-wishlist}">Back </a>
+  <h1 th:text="${wishList.title}">My WishList</h1>
 
   <div class="wishlist-layout">
 
@@ -32,12 +32,9 @@
     </div>
 
     <aside class="wishlist-side">
-      <section class="add-wish">
-        <h2>Add wish from another website:</h2>
-        <form class="add-wish-form" method="post" th:action="@{/add-wish-link}">
-          <input name="link" placeholder="Input link" type="url">
-          <button name="add" type="submit">+</button>
-        </form>
+      <section class="add-wish" th:if="${isOwner}">
+        <h2>Visit our Shop to add more Wishes</h2>
+        <a class="add-wishes-button" th:href="@{/shop(listID=${wishList.listID})}">Add wishes</a>
       </section>
       <section class="ads">
         <p>Ads</p>
