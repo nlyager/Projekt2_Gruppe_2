@@ -1,0 +1,49 @@
+.wishlist-card-container {
+    grid-auto-rows: 180px;
+    align-content: start;
+}
+
+.wishlist-card {
+    height: 100%;
+    min-height: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.wishlist-card-info,
+.wishlist-card-details {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.wishlist-card-info h3,
+.wishlist-card-info h5 {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.wishlist-card-info h5 {
+    margin: 0;
+}
+
+.wishlist-shared-by {
+    color: var(--wishing-color-mutedGray);
+    font: 400 12px Cabin, sans-serif;
+}
+
+.wishlist-shared-by span {
+    color: var(--wishing-color-ink);
+    font-weight: 700;
+}
+
+.shared-wishlists-empty {
+    color: var(--wishing-color-mutedGray);
+}
+
+@media (max-width: 760px) {
+    .wishlist-card-container {
+        grid-template-columns: 1fr;
+    }
+}
