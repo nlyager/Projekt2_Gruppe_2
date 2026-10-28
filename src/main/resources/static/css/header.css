@@ -1,5 +1,10 @@
 /** Header Container **/
 
+.header,
+.header * {
+    box-sizing: border-box;
+}
+
 .header {
     background-color: var(--wishing-color-cream);
     font-family: 'cabin', sans-serif;

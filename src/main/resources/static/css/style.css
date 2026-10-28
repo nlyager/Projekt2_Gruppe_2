@@ -25,5 +25,6 @@ a {
 }
 
 body {
+    margin: 0;
     background-color: var(--wishing-color-cream);
 }
