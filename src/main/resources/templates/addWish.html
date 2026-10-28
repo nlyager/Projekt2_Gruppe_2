@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add Wish</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/addwish.css}">
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+
+<main class="add-wish-main">
+
+    <div class="add-wish-container">
+
+        <!-- Page introduction -->
+        <section class="add-wish-intro">
+
+        <span class="eyebrow">
+            <span class="tiny-star">✦</span>
+            MAKE A WISH
+        </span>
+
+            <h1>Add something <span>special.</span></h1>
+
+            <p>Found something you would love to receive? <br>
+                Add it to your wishlist and keep all your wishes in one little star.</p>
+
+        </section>
+
+
+        <!-- Add wish form -->
+        <section class="add-wish-card">
+
+            <div class="add-wish-heading">
+
+                <div class="add-wish-icon">✎</div>
+
+                <div>
+                    <h2>Your new wish</h2>
+                    <p>Fill in the details of something you would love.</p>
+                </div>
+
+            </div>
+
+
+            <form class="add-wish-form" th:action="@{/addwish}" method="post">
+
+                <input type="hidden" name="listID" th:value="${listID}">
+
+                <!-- Wish title -->
+                <div class="form-group">
+
+                    <label for="title">Wish title</label>
+
+                    <input type="text" id="title" name="title" placeholder="e.g. Wireless headphones" maxlength="150" required>
+
+                </div>
+
+
+                <!-- Wish description -->
+                <div class="form-group">
+
+                    <label for="description">Description</label>
+
+                    <textarea id="description" name="description" rows="4" placeholder="Add details about your wish..." required></textarea>
+
+                </div>
+
+
+                <!-- Price and link -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="price">Price (DKK)</label>
+
+                        <div class="price-input-wrapper">
+
+                            <input type="number" id="price" name="price" placeholder="0.00" min="0" step="0.01" required>
+
+                            <span class="price-currency">DKK</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="link">Product link
+                            <span class="optional-label">OPTIONAL</span>
+                        </label>
+
+                        <input type="url" id="link" name="link" placeholder="https://example.com">
+
+                        <span class="input-hint">Leave empty if you do not have a link.</span>
+
+                    </div>
+
+                </div>
+
+                <!-- Categories -->
+                <div class="category-content-heading">
+                    <h3>Choose categories</h3>
+                    <p>Find the category that best matches your wish.<br>You can choose only one category.</p>
+                </div>
+
+                <div class="category-grid">
+                    <label class="category-card"
+                           th:each="category : ${categories}">
+
+                        <input type="radio" name="categoryID" th:value="${category.categoryId}" required>
+
+                        <img th:alt="${category.title}" th:src="@{'/image/categorie_images/' + ${category.image}}">
+
+                        <h2 th:text="${category.title}">Category title</h2>
+
+                    </label>
+                </div>
+
+                <p class="no-categories"
+                   th:if="${categories == null or #lists.isEmpty(categories)}">
+                    No categories are available right now.
+                </p>
+
+
+                <!-- Form actions -->
+                <div class="add-wish-actions">
+
+                    <a th:href="@{/wishlist(listID=${listID})}" class="cancel-button">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="add-wish-button">
+                        <span>Add to wishlist</span>
+                        <span class="button-star">✦</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>

@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class WishController {
@@ -42,5 +45,36 @@ public class WishController {
         model.addAttribute("isOwner", isOwner);
 
         return "show-wishlist";
+    }
+
+    @GetMapping("/addwish")
+    public String showAddWish(@RequestParam Integer listID, Model model) {
+
+        model.addAttribute("categories", wishRepo.getWishCategories());
+        model.addAttribute("listID", listID);
+
+        return "addWish";
+
+    }
+
+    @PostMapping("/addwish")
+    public String addWish(
+            @RequestParam Integer listID,
+            @RequestParam String title,
+            @RequestParam String description,
+            @RequestParam Integer price,
+            @RequestParam(required = false) String link,
+            @RequestParam Integer categoryID) {
+
+        wishRepo.addWish(
+                listID,
+                title,
+                description,
+                price,
+                link,
+                categoryID
+        );
+
+        return "redirect:/wishlist?listID=" + listID;
     }
 }

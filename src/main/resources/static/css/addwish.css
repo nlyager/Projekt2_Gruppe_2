@@ -1,0 +1,471 @@
+/** Page Layout **/
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background: var(--wishing-color-cream);
+    color: var(--wishing-color-ink);
+    font-family: Cabin, sans-serif;
+
+}
+
+.add-wish-main {
+    flex: 1;
+}
+
+.add-wish-container {
+    max-width: 760px;
+    width: calc(100% - 56px);
+    margin: 54px auto 70px;
+}
+
+/** Page introduction **/
+
+.add-wish-intro {
+    margin-bottom: 32px;
+}
+
+.add-wish-intro h1 {
+    margin: 18px 0 14px;
+
+    font: 700 clamp(38px, 5vw, 52px) Manrope, sans-serif;
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+
+}
+
+.add-wish-intro h1 span {
+    color: var(--wishing-color-yellow);
+}
+
+.add-wish-intro > p {
+    max-width: 570px;
+    margin: 0;
+
+    color: var(--wishing-color-mutedGray);
+    font-size: 15px;
+    line-height: 1.8;
+
+}
+
+.eyebrow {
+    font: 700 11px Manrope, sans-serif;
+    letter-spacing: 1.5px;
+    color: var(--wishing-color-mutedGray);
+}
+
+.tiny-star {
+    color: var(--wishing-color-starYellow);
+    margin-right: 6px;
+}
+
+/** The Form Section **/
+
+.add-wish-card {
+    padding: 30px;
+
+    background: var(--wishing-color-paperWhite);
+    border: 1px solid var(--wishing-color-lightGray);
+    border-radius: 18px;
+
+    box-shadow: 0 5px 20px rgba(28, 48, 43, 0.025);
+
+}
+
+.add-wish-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 28px;
+    padding-bottom: 23px;
+
+    border-bottom: 1px solid var(--wishing-color-lightGray);
+
+}
+
+.add-wish-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 13px;
+    background: var(--wishing-color-lightCream);
+    color: var(--wishing-color-darkYellow);
+
+    font-size: 25px;
+
+}
+
+.add-wish-heading h2 {
+    margin: 0 0 6px;
+
+    font: 700 21px Manrope, sans-serif;
+    letter-spacing: -0.6px;
+
+}
+
+.add-wish-heading p {
+    margin: 0;
+
+    color: var(--wishing-color-mutedGray);
+    font-size: 13px;
+    line-height: 1.6;
+
+}
+
+/** Form fields **/
+
+.add-wish-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+}
+
+.form-group > label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: var(--wishing-color-ink);
+    font: 700 12px Manrope, sans-serif;
+
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+
+    border: 1px solid #dfe3da;
+    border-radius: 9px;
+
+    background: #fff;
+    color: var(--wishing-color-ink);
+
+    font: 400 13px Cabin, sans-serif;
+
+    transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+
+}
+
+.form-group input {
+    min-height: 46px;
+}
+
+.form-group textarea {
+    min-height: 115px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9aa59d;
+}
+
+.form-group input,
+.form-group textarea {
+    outline: none;
+    border-color: var(--wishing-color-darkGreen);
+    box-shadow: 0 0 0 3px rgba(33, 72, 59, 0.09);
+}
+
+.input-hint {
+    color: var(--wishing-color-mutedGray);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.optional-label {
+    padding: 4px 6px;
+
+    border-radius: 4px;
+    background: var(--wishing-color-lightCream);
+
+    color: var(--wishing-color-darkYellow);
+    font: 700 9px Cabin, sans-serif;
+    letter-spacing: 0.5px;
+
+}
+
+/** Price and Link **/
+
+.form-row {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 20px;
+}
+
+.price-input-wrapper {
+    position: relative;
+}
+
+.price-input-wrapper input {
+    padding-right: 52px;
+}
+
+.price-currency {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
+
+    color: var(--wishing-color-mutedGray);
+    font-size: 11px;
+    pointer-events: none;
+}
+
+/** Category Choice Menu **/
+
+.category-content-heading {
+    margin-bottom: 20px;
+}
+
+.category-content-heading h3 {
+    margin: 0 0 8px;
+    color: var(--wishing-color-ink);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.category-content-heading p {
+    margin: 0;
+    color: var(--wishing-color-mutedGray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: var(--wishing-color-paperWhite);
+    box-shadow: 0 2px 8px rgba(28, 48, 43, 0.12);
+    text-align: center;
+    cursor: pointer;
+
+    transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease,
+            background-color 0.2s ease;
+
+}
+
+.category-card {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px rgba(28, 48, 43, 0.18);
+}
+
+.category-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.category-card h2 {
+    margin: 0;
+    padding: 16px;
+    color: var(--wishing-color-ink);
+    font-size: 1.1rem;
+}
+
+/* Hide the checkbox visually, but keep it functional */
+.category-card input[type="radio"] {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    accent-color: var(--wishing-color-darkGreen);
+    cursor: pointer;
+}
+
+/* Highlight selected categories */
+.category-card:has(input[type="radio"]:checked) {
+    border-color: var(--wishing-color-darkGreen);
+    background: var(--wishing-color-veryLightGreen);
+    box-shadow: 0 0 0 2px var(--wishing-color-darkGreen);
+}
+
+/* Keyboard accessibility */
+.category-card:has(input[type="radio"]:focus-visible) {
+    outline: 3px solid var(--wishing-color-yellow);
+    outline-offset: 3px;
+}
+
+.category-card input[type="radio"] {
+    display:none;
+}
+
+/** Form Submit Action **/
+
+.add-wish-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 4px;
+    padding-top: 23px;
+
+    border-top: 1px solid var(--wishing-color-lightGray);
+
+}
+
+.cancel-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 45px;
+    padding: 12px 17px;
+
+    border: 1px solid var(--wishing-color-lightGray);
+    border-radius: 9px;
+
+    color: var(--wishing-color-ink);
+    background: transparent;
+
+    font: 700 12px Cabin, sans-serif;
+
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+
+}
+
+.cancel-button {
+    background: var(--wishing-color-lightCream);
+    border-color: #d8d9ca;
+}
+
+.add-wish-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 45px;
+    padding: 12px 18px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: var(--wishing-color-darkGreen);
+    color: #fff;
+
+    font: 700 12px Cabin, sans-serif;
+    cursor: pointer;
+
+    transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+
+}
+
+.add-wish-button {
+    background: var(--wishing-color-ink);
+    transform: translateY(-1px);
+}
+
+.button-star {
+    color: #e7c36d;
+    font-size: 15px;
+}
+
+/** Media Section (Responsive Design) **/
+
+@media (max-width: 600px) {
+
+    .add-wish-container {
+        width: calc(100% - 36px);
+        margin-top: 35px;
+        margin-bottom: 45px;
+    }
+
+    .add-wish-intro h1 {
+        font-size: 39px;
+        letter-spacing: -1.3px;
+    }
+
+    .add-wish-card {
+        padding: 22px;
+    }
+
+    .add-wish-heading {
+        align-items: flex-start;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .add-wish-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .cancel-button,
+    .add-wish-button {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 380px) {
+
+    .add-wish-card {
+        padding: 17px;
+    }
+
+    .add-wish-intro h1 {
+        font-size: 35px;
+    }
+
+    .category-toggle-label {
+        padding: 14px;
+    }
+
+    .category-content {
+        padding: 16px 12px;
+    }
+
+}

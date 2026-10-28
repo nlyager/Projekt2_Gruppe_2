@@ -2,7 +2,9 @@
 
 .header {
     background-color: var(--wishing-color-cream);
+    font-family: 'cabin', sans-serif;
 }
+
 .header-container {
     height: 82px;
     max-width: 1200px;
@@ -36,7 +38,6 @@
     font-size: 13px;
     font-weight: 600;
     gap: 27px;
-
 }
 
 .nav-menu > a:not(.nav-cta) {
