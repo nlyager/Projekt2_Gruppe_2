@@ -31,6 +31,14 @@
           <p th:text="${wish.description}">Description</p>
           <span class="price" th:text="${wish.price} + ' kr.'"></span>
 
+          <div class="reserve-box" th:if="${isOwner}">
+            <form class="reserve-form" method="post" th:action="@{/delete-wish}">
+              <input type="hidden" name="wishID" th:value="${wish.wishId}">
+              <input type="hidden" name="listID" th:value="${wishList.listID}">
+              <button class="delete-wish-button" type="submit">Delete</button>
+            </form>
+          </div>
+
           <div class="reserve-box" th:unless="${isOwner}">
 
             <span class="reserved-label" th:if="${wish.reserveId != 0 and
