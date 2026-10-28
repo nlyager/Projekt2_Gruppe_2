@@ -115,6 +115,7 @@ public class WishController {
 
     @PostMapping("/addwish")
     public String addWish(
+            @RequestParam String source,
             @RequestParam Integer listID,
             @RequestParam String title,
             @RequestParam String description,
@@ -130,6 +131,10 @@ public class WishController {
                 link,
                 categoryID
         );
+
+        if(source.equals("shop")) {
+            return "redirect:/shop";
+        }
 
         return "redirect:/wishlist?listID=" + listID;
     }

@@ -54,6 +54,8 @@
 
                 <input type="hidden" name="categoryID" th:if="${source == 'shop'}" th:value="${categoryID}">
 
+                <input type="hidden" name="source" th:value="${source}">
+
                 <!-- Wish title -->
                 <div class="form-group">
 
@@ -160,7 +162,11 @@
                 <!-- Form actions -->
                 <div class="add-wish-actions">
 
-                    <a th:href="@{/wishlist(listID=${listID})}" class="cancel-button">
+                    <a th:href="@{/wishlist(listID=${listID})}" th:if="${source == 'show-wishlist'}" class="cancel-button">
+                        Cancel
+                    </a>
+
+                    <a th:href="@{/shop}" th:if="${source == 'shop'}" class="cancel-button">
                         Cancel
                     </a>
 
