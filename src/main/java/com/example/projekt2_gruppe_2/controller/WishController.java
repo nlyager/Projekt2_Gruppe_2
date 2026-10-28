@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+
 @Controller
 public class WishController {
 
@@ -76,13 +78,24 @@ public class WishController {
     }
 
     @GetMapping("/addwish")
-    public String showAddWish(@RequestParam Integer listID, Model model) {
+    public String showAddWish(
+            @RequestParam(required = false) Integer listID,
+            @RequestParam(required = false) Integer categoryID,
+            @RequestParam String source,
+            Model model,
+            HttpSession session) {
 
-        model.addAttribute("categories", wishRepo.getWishCategories());
+        Integer userID = (Integer) session.getAttribute("userID");
+
+        ArrayList<WishList> wishLists = wishListRepo.getWishLists(userID);
+
+        model.addAttribute("wishLists", wishLists);
         model.addAttribute("listID", listID);
+        model.addAttribute("categoryID", categoryID);
+        model.addAttribute("source", source);
+        model.addAttribute("categories", wishRepo.getWishCategories());
 
         return "addWish";
-
     }
 
     @PostMapping("/addwish")

@@ -50,7 +50,9 @@
 
             <form class="add-wish-form" th:action="@{/addwish}" method="post">
 
-                <input type="hidden" name="listID" th:value="${listID}">
+                <input type="hidden" name="listID" th:if="${source == 'show-wishlist'}" th:value="${listID}">
+
+                <input type="hidden" name="categoryID" th:if="${source == 'shop'}" th:value="${categoryID}">
 
                 <!-- Wish title -->
                 <div class="form-group">
@@ -104,29 +106,55 @@
 
                 </div>
 
-                <!-- Categories -->
-                <div class="category-content-heading">
-                    <h3>Choose categories</h3>
-                    <p>Find the category that best matches your wish.<br>You can choose only one category.</p>
-                </div>
+                <!-- Categories : Source show-wishlist -->
+                <section th:if="${source == 'show-wishlist'}">
+                    <div class="category-content-heading">
+                        <h3>Choose categories</h3>
+                        <p>Find the category that best matches your wish.<br>You can choose only one category.</p>
+                    </div>
 
-                <div class="category-grid">
-                    <label class="category-card"
-                           th:each="category : ${categories}">
+                    <div class="category-grid">
+                        <label class="category-card"
+                               th:each="category : ${categories}">
 
-                        <input type="radio" name="categoryID" th:value="${category.categoryId}" required>
+                            <input type="radio" name="categoryID" th:value="${category.categoryId}" required>
 
-                        <img th:alt="${category.title}" th:src="@{'/image/categorie_images/' + ${category.image}}">
+                            <img th:alt="${category.title}" th:src="@{'/image/categorie_images/' + ${category.image}}">
 
-                        <h2 th:text="${category.title}">Category title</h2>
+                            <h2 th:text="${category.title}">Category title</h2>
 
-                    </label>
-                </div>
+                        </label>
+                    </div>
 
-                <p class="no-categories"
-                   th:if="${categories == null or #lists.isEmpty(categories)}">
-                    No categories are available right now.
-                </p>
+                    <p class="no-categories"
+                       th:if="${categories == null or #lists.isEmpty(categories)}">No categories are available right now.
+                    </p>
+                </section>
+
+                <!-- Wishlists : Source shop -->
+                <section th:if="${source == 'shop'}">
+
+                    <div class="category-content-heading">
+                        <h3>Choose a wishlist</h3>
+                        <p>Select which of your wishlists you want to add this wish to.</p>
+                    </div>
+
+                    <div class="category-grid">
+                        <label class="category-card" th:each="wishList : ${wishLists}">
+
+                            <input type="radio" name="listID" th:value="${wishList.listID}" required>
+
+                            <img th:alt="${wishList.title}" th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}">
+
+                            <h2 th:text="${wishList.title}">Wishlist title</h2>
+                        </label>
+                    </div>
+
+                    <p class="no-categories"
+                       th:if="${wishLists == null or #lists.isEmpty(wishLists)}">
+                        You don't have any wishlists yet.
+                    </p>
+                </section>
 
 
                 <!-- Form actions -->

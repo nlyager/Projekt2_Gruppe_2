@@ -15,11 +15,16 @@
 <main class="shop-page">
     <h1>Shop by category</h1>
     <section aria-label="Categories" class="category-grid">
-        <article class="category-card" th:each="category : ${wishCategories}">
+        <a class="category-card"
+           th:each="category : ${wishCategories}"
+           th:href="@{/addwish(categoryID=${category.getCategoryId()}, source='shop')}">
+
             <img th:alt="${category.title}"
                  th:src="@{'/image/categorie_images/' + ${category.image}}">
+
             <h2 th:text="${category.title}">Category title</h2>
-        </article>
+
+        </a>
     </section>
 </main>
 

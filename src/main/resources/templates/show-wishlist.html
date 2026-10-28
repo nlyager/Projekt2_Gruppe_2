@@ -58,7 +58,7 @@
     <aside class="wishlist-side">
       <section class="add-wish" th:if="${isOwner}">
         <h2>Visit our Shop to add more Wishes</h2>
-        <a class="add-wishes-button" th:href="@{/addwish(listID=${wishList.listID})}">Add wishes</a>
+        <a class="add-wishes-button" th:href="@{/addwish(listID=${wishList.listID}, source='show-wishlist')}">Add wishes</a>
       </section>
       <section class="ads">
         <p>Ads</p>
