@@ -2,6 +2,7 @@ package com.example.projekt2_gruppe_2.controller;
 
 import com.example.projekt2_gruppe_2.model.WishCategories;
 import com.example.projekt2_gruppe_2.repository.WishRepo;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +16,17 @@ public class WishCategoriesController {
     WishRepo wishRepo;
 
     @GetMapping("/shop")
-    public String getShop(Model model) {
-        System.out.println("getshop");
+    public String getShop(Model model, HttpSession session) {
+        System.out.println("getshop()");
+
+        Integer userID = (Integer) session.getAttribute("userID");
+
+        if (userID == null) {
+            System.out.println("getfindwishlist()");
+            System.out.println("userID is null");
+            return "redirect:/";
+        }
+        System.out.println("UserID : " + userID);
 
         ArrayList<WishCategories> wishCategories = wishRepo.getWishCategories();
         model.addAttribute("wishCategories", wishCategories);
