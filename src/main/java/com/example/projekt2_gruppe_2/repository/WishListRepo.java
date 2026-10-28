@@ -68,6 +68,36 @@ public class WishListRepo {
         return wishLists;
     }
 
+    public ArrayList<WishList> getWishListsSharedWith(int userId) {
+        ArrayList<WishList> wishLists = new ArrayList<>();
+        String sql = "SELECT DISTINCT wishlist.*, owner.name AS sharedBy FROM wishListSharedWith "
+                + "JOIN wishlist ON wishListSharedWith.listID = wishlist.listID "
+                + "JOIN user AS owner ON wishlist.userID = owner.userID "
+                + "WHERE wishListSharedWith.userID = ?";
+
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    wishLists.add(new WishList(
+                            rs.getInt("listID"),
+                            rs.getString("title"),
+                            rs.getString("description"),
+                            rs.getInt("userID"),
+                            rs.getString("image"),
+                            rs.getString("sharedBy")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("Could not retrieve shared wishlists", e);
+        }
+
+        return wishLists;
+    }
+
     public void addWishList(int userId, String title, String description) {
         String sql = "INSERT INTO wishlist (title, description, userID) VALUES (?, ?, ?)";
 

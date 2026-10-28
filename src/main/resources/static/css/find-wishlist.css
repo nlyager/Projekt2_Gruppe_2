@@ -264,12 +264,15 @@
 .wishlist-card-container {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 220px;
+    align-content: start;
     gap: 18px;
 }
 
 .wishlist-entry {
     position: relative;
     min-width: 0;
+    min-height: 0;
 }
 
 .wishlist-card {
@@ -280,8 +283,11 @@
     gap: 20px;
 
     min-width: 0;
-    min-height: 150px;
+    height: 100%;
+    min-height: 0;
     padding: 22px;
+    box-sizing: border-box;
+    overflow: hidden;
 
     background-color: var(--wishing-color-paperWhite);
     border: 1px solid var(--wishing-color-lightGray);
@@ -338,6 +344,8 @@
 
     flex: 1;
     min-width: 0;
+    min-height: 0;
+    overflow: hidden;
 
 }
 
@@ -346,6 +354,8 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    min-height: 0;
+    overflow: hidden;
     color: var(--wishing-color-ink);
     text-decoration: none;
 }
@@ -367,8 +377,20 @@
     line-height: 1.4;
 
     margin: 0;
+    display: -webkit-box;
+    overflow: hidden;
     overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 
+}
+
+.wishlist-card-info h5 {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .wishlist-delete-form {
@@ -529,7 +551,6 @@ RESPONSIVE DESIGN
     }
 
     .wishlist-card {
-        min-height: 130px;
         padding: 18px;
         gap: 16px;
     }

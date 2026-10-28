@@ -6,6 +6,7 @@ public class WishList {
     private String description;
     private int userID;
     private String image;
+    private String sharedBy;
 
     public WishList(int listID, String title, String description, int userID, String image) {
         this.listID = listID;
@@ -13,6 +14,11 @@ public class WishList {
         this.description = description;
         this.userID = userID;
         this.image = image;
+    }
+
+    public WishList(int listID, String title, String description, int userID, String image, String sharedBy) {
+        this(listID, title, description, userID, image);
+        this.sharedBy = sharedBy;
     }
 
     public WishList(int listID, String title, String description, String image) {
@@ -48,5 +54,9 @@ public class WishList {
 
     public String getImage() {
         return image;
+    }
+
+    public String getSharedBy() {
+        return sharedBy;
     }
 }

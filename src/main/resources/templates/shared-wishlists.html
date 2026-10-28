@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Wishlists</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/find-wishlist.css}">
+    <link rel="stylesheet" th:href="@{/css/shared-wishlists.css}">
+</head>
+<body>
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main class="find-wishlist-main">
+    <section class="find-wishlist-container">
+        <div class="find-wishlist-intro">
+            <span class="eyebrow">
+                <span class="tiny-star">✦</span>
+                WISHLISTS
+            </span>
+            <h1>Shared <span>wishlists</span></h1>
+            <p>Wishlists that others have shared with you</p>
+        </div>
+
+        <section class="wishlist-results">
+            <div class="wishlist-card-container">
+                <div class="wishlist-entry" th:each="wishList : ${wishLists}">
+                    <div class="wishlist-card">
+                        <a class="wishlist-card-image-link"
+                           th:href="@{/wishlist(listID=${wishList.listID})}">
+                            <img class="wishlist-card-image"
+                                 th:alt="${wishList.title}"
+                                 th:src="${wishList.image != null ? '/image/' + wishList.image : '/image/default.svg'}">
+                        </a>
+
+                        <div class="wishlist-card-info">
+                            <a class="wishlist-card-details"
+                               th:href="@{/wishlist(listID=${wishList.listID})}">
+                                <span class="wishlist-card-label">WISHLIST</span>
+                                <h3 th:text="${wishList.title}">Wishlist Name</h3>
+                                <span class="wishlist-shared-by">
+                                    Shared by <span th:text="${wishList.sharedBy}">Owner name</span>
+                                </span>
+                                <h5 th:text="${wishList.description}">Wishlist Description</h5>
+                                <span class="wishlist-card-link">Explore wishlist</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="shared-wishlists-empty" th:if="${#lists.isEmpty(wishLists)}">
+                No wishlists have been shared with you yet.
+            </p>
+        </section>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>
