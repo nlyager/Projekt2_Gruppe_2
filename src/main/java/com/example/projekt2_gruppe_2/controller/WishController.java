@@ -77,6 +77,21 @@ public class WishController {
         return "redirect:/wishlist?listID=" + listID;
     }
 
+    @PostMapping("/delete-wish")
+    public String deleteWish(@RequestParam int wishID, @RequestParam int listID,
+                             HttpSession session) {
+        Integer userID = (Integer) session.getAttribute("userID");
+        if (userID == null) {
+            return "redirect:/?loginError=true";
+        }
+
+        WishList list = wishListRepo.getWishListByID(listID);
+        if (list != null && list.getUserID() == userID) {
+            wishRepo.deleteWish(wishID, listID);
+        }
+        return "redirect:/wishlist?listID=" + listID;
+    }
+
     @GetMapping("/addwish")
     public String showAddWish(
             @RequestParam(required = false) Integer listID,

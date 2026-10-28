@@ -120,4 +120,16 @@ public class WishRepo {
             e.printStackTrace();
         }
     }
+
+    public void deleteWish(int wishID, int listID) {
+        String sql = "DELETE FROM wish WHERE wishID = ? AND listID = ?";
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, wishID);
+            ps.setInt(2, listID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("Could not delete wish", e);
+        }
+    }
 }
