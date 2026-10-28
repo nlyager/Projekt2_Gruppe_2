@@ -14,7 +14,8 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 <main class="wishlist-page">
-  <a class="back-link" th:href="@{/my-wishlist}">Back </a>
+  <a class="back-link" th:if="${isOwner}" th:href="@{/my-wishlists}">Back</a>
+  <a class="back-link" th:unless="${isOwner}" th:href="@{/find-wishlist}">Back</a>
   <h1 th:text="${wishList.title}">My WishList</h1>
 
   <div class="wishlist-layout">
