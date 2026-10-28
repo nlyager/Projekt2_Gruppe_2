@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -20,10 +21,8 @@ public class WishController {
     WishListRepo wishListRepo;
 
     @GetMapping("/wishlist")
-    public String showWishList(
-            @RequestParam Integer listID,
-            HttpSession session,
-            Model model) {
+    public String showWishList(@RequestParam Integer listID,
+                               HttpSession session, Model model) {
 
         Integer userID = (Integer) session.getAttribute("userID");
 
@@ -38,9 +37,39 @@ public class WishController {
         model.addAttribute("wishList", current);
         model.addAttribute("wishes", wishRepo.getWishes(listID));
         model.addAttribute("categories", wishRepo.getWishCategories());
+        model.addAttribute("userID", userID);
 
         model.addAttribute("isOwner", isOwner);
 
         return "show-wishlist";
+    }
+
+    @PostMapping("/reserve-wish")
+    public String reserveWish(@RequestParam int wishID, @RequestParam int listID,
+                              HttpSession session) {
+
+        Integer userID = (Integer) session.getAttribute("userID");
+        if (userID == null) {
+            return "redirect:/?loginError=true";
+        }
+
+        WishList list = wishListRepo.getWishListByID(listID);
+        if (list != null && list.getUserID() != userID) {
+            wishRepo.reserveWish(wishID, listID, userID);
+        }
+        return "redirect:/wishlist?listID=" + listID;
+    }
+
+    @PostMapping("/unreserve-wish")
+    public String unreserveWish(@RequestParam int wishID, @RequestParam int listID,
+                                HttpSession session) {
+
+        Integer userID = (Integer) session.getAttribute("userID");
+        if (userID == null) {
+            return "redirect:/?loginError=true";
+        }
+
+        wishRepo.unreserveWish(wishID, listID, userID);
+        return "redirect:/wishlist?listID=" + listID;
     }
 }

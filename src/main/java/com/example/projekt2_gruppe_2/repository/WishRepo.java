@@ -39,23 +39,24 @@ public class WishRepo {
     }
 
 
-    public ArrayList<Wish> getWishes(int listid) {
+    public ArrayList<Wish> getWishes(int listID) {
         ArrayList<Wish> wishes = new ArrayList<>();
 
         String sql = "SELECT * FROM wish WHERE listID = ?";
         try (Connection con = dataSource.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, listid);
+            ps.setInt(1, listID);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                int wishID = rs.getInt("wishID");
                 String title = rs.getString("title");
                 String description = rs.getString("description");
                 int price = rs.getInt("price");
                 int reserveId = rs.getInt("reserveID");
                 int listId = rs.getInt("listID");
                 int categoryId = rs.getInt("categoryID");
-                wishes.add(new Wish(title, description, price, reserveId, listId, categoryId));
+                wishes.add(new Wish(wishID, title, description, price, reserveId, listId, categoryId));
             }
 
         } catch (SQLException e) {
@@ -64,5 +65,29 @@ public class WishRepo {
         return  wishes;
     }
 
+    public void reserveWish(int wishID, int listID, int userID) {
+        String sql = "UPDATE wish SET reserveID = ? WHERE wishID = ? AND listID = ? AND reserveID IS NULL";
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userID);
+            ps.setInt(2, wishID);
+            ps.setInt(3, listID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void unreserveWish(int wishID, int listID, int userID) {
+        String sql = "UPDATE wish SET reserveID = NULL WHERE wishID = ? AND listID = ? AND reserveID = ?";
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, wishID);
+            ps.setInt(2, listID);
+            ps.setInt(3, userID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
