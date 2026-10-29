@@ -14,7 +14,7 @@ insert into wishcategories (title, image) values
 
 
 insert into user (name, email, password) VALUES
-('Nicklas','nicklas@lyager.me','123'),
+('Nicklas','nicklas@lymail.dk','123'),
 ('Jesper','Jesper@ymail.com','321'),
 ('William','william@gmail.com','123'),
 ('Mikkel','mikkel@hotmail.com','321');
