@@ -35,6 +35,6 @@ If you want to test the application using different users, you can use the crede
 | User ID | Email | Password |
 |:---:|---|:---:|
 | 1 | `nicklas@lymail.dk` | `123` |
-| 2 | `jesper@ymail.com` | `123` |
-| 3 | `william@gmail.com` | `321` |
+| 2 | `jesper@ymail.com` | `321` |
+| 3 | `william@gmail.com` | `123` |
 | 4 | `mikkel@hotmail.com` | `321` |
