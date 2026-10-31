@@ -104,7 +104,7 @@
     display: flex;
 }
 
-.login-box {
+.popup-box {
     position: relative;
 
     background: var(--wishing-color-lightGray);
@@ -114,7 +114,7 @@
     border-radius: 10px;
 }
 
-.login-box input {
+.popup-box input {
     display: block;
     width: 100%;
     margin: 10px 0;
@@ -123,7 +123,7 @@
 }
 
 
-.login-box button {
+.popup-box button {
     width: 100%;
     padding: 10px;
     cursor: pointer;
@@ -142,6 +142,14 @@
 .login-error {
     color: #c51f32;
     font-size: 14px;
+}
+
+#not-logged-in-popup {
+    display: flex;
+}
+
+#logged-in-error-popup {
+    display: flex;
 }
 
 @media (max-width: 760px) {

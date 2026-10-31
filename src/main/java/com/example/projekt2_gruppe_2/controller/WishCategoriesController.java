@@ -24,7 +24,7 @@ public class WishCategoriesController {
         if (userID == null) {
             System.out.println("getfindwishlist()");
             System.out.println("userID is null");
-            return "redirect:/";
+            return "redirect:/?notLoggedIn=true";
         }
         System.out.println("UserID : " + userID);
 

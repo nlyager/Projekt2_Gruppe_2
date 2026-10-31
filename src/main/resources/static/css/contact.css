@@ -56,7 +56,6 @@ button:hover {
 }
 
 .success-message {
-    display: none;
     margin-top: 20px;
     padding: 15px;
     background: #d4edda;

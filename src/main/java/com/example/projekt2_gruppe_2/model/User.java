@@ -1,7 +1,7 @@
 package com.example.projekt2_gruppe_2.model;
 
 public class User {
-    final int userID;
+    private int userID;
     private String name;
     private String email;
     private String password;
@@ -13,7 +13,13 @@ public class User {
         this.name = name;
         this.email =email;
         this.password = password;
-}
+    }
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email =email;
+        this.password = password;
+    }
 
     public void setPassword(String password) {
         this.password = password;

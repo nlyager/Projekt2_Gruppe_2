@@ -10,31 +10,31 @@
 </head>
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
+
 <div class="container">
     <h1>Contact</h1>
 
-    <form id="contactform">
-        <input type="text" placeholder="Your name" required>
+    <form th:action="@{/contact-sent}" method="post">
 
-        <input type="email" placeholder="Your email" required>
+        <input type="text" name="name"
+               placeholder="Your name" required>
 
-        <textarea placeholder="Your message" rows="5" required></textarea>
+        <input type="email" name="email"
+               placeholder="Your email" required>
+
+        <textarea name="message"
+                  placeholder="Your message"
+                  rows="5" required></textarea>
 
         <button type="submit">Send message</button>
     </form>
-    <div class="success-message" id="successMessage">
+
+    <div class="success-message"
+         th:if="${param.sent != null}">
         Thank you for your message! We will return as quickly as possible.
     </div>
-
 </div>
-<script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-        event.preventDefault();
 
-        document.getElementById("successMessage").style.display = "block";
-        this.reset();
-    });
-</script>
 </body>
 <footer th:replace="~{fragments/footer :: footer}"></footer>
 </html>

@@ -17,7 +17,7 @@ public class ShopController {
     public String sharedWishlists(HttpSession session, Model model) {
         Integer userId = (Integer) session.getAttribute("userID");
         if (userId == null) {
-            return "redirect:/?loginError=true";
+            return "redirect:/?notLoggedIn=true";
         }
 
         model.addAttribute("wishLists", wishListRepo.getWishListsSharedWith(userId));

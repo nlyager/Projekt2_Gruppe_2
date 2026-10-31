@@ -19,13 +19,13 @@
 
                 <!-- Show when the user is NOT logged in -->
                 <div th:if="${session.userID == null}">
-                    <input type="checkbox" id="login-toggle">
+                    <input type="checkbox" id="login-toggle" th:checked="${param.loginError != null}">
                     <label for="login-toggle" class="nav-cta">
                         Log in
                     </label>
 
                     <div id="login-popup" class="popup">
-                        <div class="login-box">
+                        <div class="popup-box">
 
                             <label for="login-toggle" class="close">x</label>
                             <form th:action="@{/login}" method="post">
@@ -52,7 +52,24 @@
                     </button>
                 </form>
             </div>
+
+            <!-- Login Required Popup -->
+            <div id="not-logged-in-popup" class="popup" th:if="${param.notLoggedIn != null}">
+
+                <div class="popup-box">
+
+                    <h2>Login required</h2>
+
+                    <p>You must log in to access this page.</p>
+
+                    <a th:href="@{/}" class="nav-cta">OK</a>
+
+                </div>
+            </div>
+
         </nav>
+
+
 
     </div>
 </header>

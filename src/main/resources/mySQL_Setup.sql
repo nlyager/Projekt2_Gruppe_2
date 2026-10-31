@@ -1,12 +1,12 @@
--- CREATE USER IF NOT EXISTS 'F26A'@'localhost' IDENTIFIED BY '1234';
--- GRANT ALL PRIVILEGES ON *.* TO 'F26A'@'localhost';
--- eller
--- GRANT ALL PRIVILEGES ON Projekt2_Gruppe_2.* TO 'F26A'@'localhost';
-
 DROP SCHEMA IF EXISTS Projekt2_Gruppe_2;
 
 CREATE SCHEMA IF NOT EXISTS Projekt2_Gruppe_2;
 USE Projekt2_Gruppe_2;
+
+-- CREATE USER IF NOT EXISTS 'F26A'@'localhost' IDENTIFIED BY '1234';
+-- GRANT ALL PRIVILEGES ON *.* TO 'F26A'@'localhost';
+-- eller
+-- GRANT ALL PRIVILEGES ON Projekt2_Gruppe_2.* TO 'F26A'@'localhost';
 
 DROP TABLE IF EXISTS wishListSharedWith;
 DROP TABLE IF EXISTS wish;

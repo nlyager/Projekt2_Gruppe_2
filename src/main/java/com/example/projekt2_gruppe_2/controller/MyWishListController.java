@@ -21,7 +21,7 @@ public class MyWishListController {
         Integer userID = (Integer) session.getAttribute("userID");
 
         if (userID == null) {
-            return "redirect:/?loginError=true";
+            return "redirect:/?notLoggedIn=true";
         }
 
         model.addAttribute("wishLists", wishListRepo.getWishLists(userID));

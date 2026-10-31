@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.HttpMediaTypeException;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class IndexController {
@@ -24,6 +25,12 @@ public class IndexController {
     public String getaboutus() {
         System.out.println("getaboutus");
         return "about-us";
+    }
+
+    @PostMapping("/contact-sent")
+    public String getcontactsend() {
+        System.out.println("getcontactsend");
+        return "redirect:/contact?sent=true";
     }
 
 }
